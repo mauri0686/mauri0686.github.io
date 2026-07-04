@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mauricio Acuña — CV</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0a0e14; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+  .term-window {
+    background: #0d1117; border: 1px solid #30363d; border-radius: 8px; overflow: hidden;
+  }
+  .term-bar { background: #161b22; padding: .5rem .9rem; display: flex; align-items: center; gap: .4rem; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .term-dot { width: 10px; height: 10px; border-radius: 50%; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .term-dot.r { background: #ff5f56; } .term-dot.y { background: #ffbd2e; } .term-dot.g { background: #27c93f; }
+  .term-title { margin: 0 auto; color: #8b949e; font-size: .72rem; font-family: monospace; transform: translateX(-15px); }
+
+  #term-body {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: .74rem; line-height: 1.5; padding: 1rem 1.2rem;
+    color: #c9d1d9; background: #0a0e14;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .prompt { color: #7ee787; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .out { color: #c9d1d9; }
+  .dim { color: #9aa4b2; margin: .15rem 0 .75rem; white-space: pre-wrap; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .block { margin-bottom: .55rem; }
+
+  .footer-line { text-align: center; color: #6e7681; font-family: monospace; font-size: .68rem; margin-top: .6rem; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+</style>
+</head>
+<body>
+
+<div class="term-window">
+  <div class="term-bar">
+    <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+    <span class="term-title">mauricio@career: ~</span>
+  </div>
+  <div id="term-body">
+
+    <div class="block">
+      <div><span class="prompt">mauricio@career:~$</span> whoami</div>
+      <div class="out dim">Mauricio Acuña — Senior .NET Full-Stack Engineer
+Buenos Aires, Argentina · Remote (GMT-3) · mauri0686@gmail.com
+linkedin.com/in/mauricio-acuña · github.com/mauri0686</div>
+    </div>
+
+    <div class="block">
+      <div><span class="prompt">mauricio@career:~$</span> cat summary.txt</div>
+      <div class="out dim">Senior full-stack engineer, 13+ years shipping .NET applications end to end
+(.NET Framework -&gt; .NET 9), with C#, Blazor, Angular and React on SQL Server
+and Azure. 3 years fully remote for a US healthcare company, working daily
+in English. Earlier led distributed teams of 6-8 engineers across AR/ES/PE.
+Shipping applied-AI features too: LLM apps &amp; agents, RAG, automation.</div>
+    </div>
+
+    <div class="block">
+      <div><span class="prompt">mauricio@career:~$</span> git log --oneline --reverse experience/</div>
+      <div class="out dim">2007-2015  feat: full-stack .NET across e-commerce, insurance, IVR, QA
+             (Zoologic, New Digital Way, AXA Assistance, ATS, Grupo Abax)
+2015-2022  feat: lead 8-eng team @ Prosegur (AR/ES/PE)
+             cash-in-transit logistics platform + ATM key mgmt for banks
+             stack: .NET 5, C#, Angular 8-10, SQL Server, Oracle, Docker, GCP
+2022-2023  feat: lead 6-eng team @ Conekta, payments product (Scrum/Jira)
+2023-now   feat: Blazor WASM micro-frontends @ Homecare Homebase (via Kopius)
+             typed GraphQL, Azure DevOps CI/CD, daily English w/ US team</div>
+    </div>
+
+    <div class="block">
+      <div><span class="prompt">mauricio@career:~$</span> ls skills/</div>
+      <div class="out dim">languages-frameworks/  C#, .NET 9/Core/Framework, TypeScript, JS, Python
+frontend/               Blazor WebAssembly, Angular, React, SignalR
+cloud-devops/           Azure, Azure DevOps, CI/CD, Docker, Google Cloud
+data/                   SQL Server, Oracle, MySQL, MongoDB, EF Core
+ai/                     LLM apps &amp; agents, RAG, prompt engineering</div>
+    </div>
+
+    <div class="block">
+      <div><span class="prompt">mauricio@career:~$</span> cat education.txt</div>
+      <div class="out dim">Universidad Abierta Interamericana
+Educación IT: SQL Server, Oracle, .NET Design Patterns, Kanban
+PluralSight: Angular, Domain-Driven Design
+Languages: Spanish (native), English (Upper-Intermediate B2, 3 yrs w/ US teams)</div>
+    </div>
+
+    <div class="block">
+      <div><span class="prompt">mauricio@career:~$</span> cat availability.txt</div>
+      <div class="out dim">status: open to remote roles (contractor USD or full-time)
+notice: immediate</div>
+    </div>
+
+    <div><span class="prompt">mauricio@career:~$</span> <span class="dim">_</span></div>
+
+  </div>
+</div>
+<div class="footer-line">full interactive version — mauri0686.github.io</div>
+
+</body>
+</html>
