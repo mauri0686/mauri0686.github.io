@@ -6,180 +6,311 @@
 <title>Mauricio Acuña — Senior .NET Full-Stack Engineer</title>
 <meta name="description" content="Mauricio Acuña — Senior .NET Full-Stack Engineer, 13+ years, C#/.NET, Angular/React, Azure. Applied AI: LLM agents & automation. Open to remote roles.">
 <style>
-  :root {
-    --navy: #16324F;
-    --accent: #2E6DA4;
-    --bg: #F7F9FC;
-    --card: #FFFFFF;
-    --text: #1E2430;
-    --sub: #5A6472;
-    --border: #E4E9F0;
-  }
   * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.55;
+  html, body { margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+  /* ---------- Switcher bar ---------- */
+  #switcher {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; justify-content: center; gap: .5rem;
+    padding: .6rem; background: #0d1117; border-bottom: 1px solid #30363d;
   }
-  header {
-    background: var(--navy);
-    color: #fff;
-    padding: 3rem 1.5rem 2.5rem;
-    text-align: center;
+  #switcher button {
+    font-family: inherit; font-size: .85rem; font-weight: 600;
+    padding: .5rem 1rem; border-radius: 6px; border: 1px solid #30363d;
+    background: #21262d; color: #8b949e; cursor: pointer; transition: all .15s;
   }
-  header h1 { margin: 0 0 .4rem; font-size: 2rem; letter-spacing: .3px; }
-  header p.title { margin: 0 0 1.2rem; color: #CFDDEC; font-size: 1.05rem; }
-  .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 1rem; font-size: .95rem; }
-  .contact-links a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.4); }
-  .contact-links a:hover { border-bottom-color: #fff; }
-  main {
-    max-width: 780px;
-    margin: -1.5rem auto 3rem;
-    padding: 0 1.5rem;
+  #switcher button.active { background: #238636; color: #fff; border-color: #2ea043; }
+  #switcher button:hover:not(.active) { background: #30363d; color: #fff; }
+
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* =====================================================
+     TERMINAL VIEW
+     ===================================================== */
+  #view-terminal {
+    background: #0a0e14; color: #c9d1d9; min-height: calc(100vh - 52px);
+    padding: 2rem 1rem 4rem;
   }
-  section.card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.6rem 1.8rem;
-    margin-bottom: 1.2rem;
-    box-shadow: 0 1px 3px rgba(20,30,50,.05);
+  .term-window {
+    max-width: 760px; margin: 0 auto; background: #0d1117;
+    border: 1px solid #30363d; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,.5);
   }
-  h2 {
-    font-size: .8rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--accent);
-    margin: 0 0 1rem;
-    border-bottom: 2px solid var(--border);
-    padding-bottom: .5rem;
+  .term-bar { background: #161b22; padding: .6rem .9rem; display: flex; align-items: center; gap: .4rem; }
+  .term-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .term-dot.r { background: #ff5f56; } .term-dot.y { background: #ffbd2e; } .term-dot.g { background: #27c93f; }
+  .term-title { margin: 0 auto; color: #8b949e; font-size: .78rem; font-family: monospace; transform: translateX(-16px); }
+  #term-body {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: .92rem; padding: 1.2rem 1.4rem; min-height: 420px; white-space: pre-wrap; word-break: break-word;
   }
-  .summary { font-size: 1.02rem; color: var(--text); }
-  .job { margin-bottom: 1.3rem; }
-  .job:last-child { margin-bottom: 0; }
-  .job-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .3rem; align-items: baseline; }
-  .job-role { font-weight: 600; }
-  .job-org { color: var(--accent); font-weight: 500; }
-  .job-dates { color: var(--sub); font-size: .88rem; white-space: nowrap; }
-  .job ul { margin: .4rem 0 0; padding-left: 1.2rem; color: var(--sub); font-size: .95rem; }
-  .job ul li { margin-bottom: .2rem; }
-  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem 1.5rem; }
-  .skill-group b { display: block; color: var(--navy); font-size: .9rem; margin-bottom: .15rem; }
-  .skill-group span { color: var(--sub); font-size: .9rem; }
-  @media (max-width: 560px) { .skills-grid { grid-template-columns: 1fr; } }
-  footer { text-align: center; color: var(--sub); font-size: .85rem; padding: 1.5rem; }
-  footer a { color: var(--accent); }
+  .prompt { color: #7ee787; }
+  .path { color: #79c0ff; }
+  .out { color: #c9d1d9; }
+  .dim { color: #6e7681; }
+  .accent { color: #d2a8ff; }
+  .cursor { display: inline-block; width: 8px; height: 1.05em; background: #c9d1d9; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* =====================================================
+     GITHUB PR VIEW
+     ===================================================== */
+  #view-pr { background: #f6f8fa; color: #1F2328; min-height: calc(100vh - 52px); }
+  .pr-wrap { max-width: 860px; margin: 0 auto; padding: 1.6rem 1.2rem 4rem; }
+  .pr-header { border-bottom: 1px solid #d0d7de; padding-bottom: 1rem; margin-bottom: 1.2rem; }
+  .pr-title { font-size: 1.6rem; font-weight: 600; margin: 0 0 .5rem; }
+  .pr-title .num { color: #59636e; font-weight: 400; }
+  .pr-badge { display: inline-flex; align-items: center; gap: .3rem; background: #1a7f37; color: #fff; font-size: .85rem; font-weight: 600; padding: .3rem .7rem; border-radius: 2em; }
+  .pr-meta { color: #59636e; font-size: .92rem; margin-top: .6rem; }
+  .pr-labels span { display: inline-block; font-size: .78rem; font-weight: 500; padding: .1rem .6rem; border-radius: 2em; margin-right: .3rem; border: 1px solid transparent; }
+  .lbl-remote { background: #ddf4ff; color: #0969da; }
+  .lbl-senior { background: #fff1e5; color: #bc4c00; }
+  .lbl-contractor { background: #f6e8ff; color: #8250df; }
+
+  .pr-box { background: #fff; border: 1px solid #d0d7de; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
+  .pr-box-head { background: #f6f8fa; border-bottom: 1px solid #d0d7de; padding: .6rem 1rem; font-size: .88rem; font-weight: 600; display: flex; align-items: center; gap: .5rem; }
+  .pr-box-body { padding: 1rem 1.2rem; font-size: .95rem; line-height: 1.6; }
+
+  .diff-file { border: 1px solid #d0d7de; border-radius: 6px; margin-bottom: .8rem; overflow: hidden; }
+  .diff-file-head { background: #f6f8fa; padding: .5rem .9rem; font-family: monospace; font-size: .85rem; font-weight: 600; border-bottom: 1px solid #d0d7de; }
+  .diff-line { font-family: "SFMono-Regular", Consolas, Menlo, monospace; font-size: .84rem; padding: .15rem .9rem; white-space: pre-wrap; }
+  .diff-add { background: #e6ffec; color: #1a7f37; }
+  .diff-add::before { content: "+ "; }
+  .diff-meta { background: #f6f8fa; color: #59636e; padding: .15rem .9rem; font-family: monospace; font-size: .8rem; }
+
+  .checks-row { display: flex; align-items: center; justify-content: space-between; padding: .55rem 1rem; border-bottom: 1px solid #eaeef2; font-size: .88rem; }
+  .checks-row:last-child { border-bottom: none; }
+  .check-ok { color: #1a7f37; font-weight: 600; }
+
+  .comment { display: flex; gap: .7rem; padding: .9rem 1.2rem; border-bottom: 1px solid #eaeef2; }
+  .comment:last-child { border-bottom: none; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; background: #24292f; color: #fff; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; flex-shrink: 0; }
+  .comment-user { font-weight: 600; font-size: .9rem; }
+  .comment-body { font-size: .9rem; color: #1F2328; margin-top: .2rem; }
+
+  .merge-btn { display: inline-flex; align-items: center; gap: .5rem; background: #8250df; color: #fff; font-weight: 600; font-size: 1rem; padding: .75rem 1.4rem; border-radius: 6px; text-decoration: none; border: none; cursor: pointer; }
+  .merge-btn:hover { background: #6c3ed1; }
+  .merge-wrap { text-align: center; margin-top: 1.4rem; }
+  .merge-sub { color: #59636e; font-size: .85rem; margin-top: .6rem; }
+
+  @media (max-width: 560px) {
+    .pr-title { font-size: 1.25rem; }
+    #term-body { font-size: .82rem; }
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Mauricio Acuña</h1>
-  <p class="title">Senior .NET Full-Stack Engineer &nbsp;|&nbsp; Applied AI (LLM apps &amp; agents)</p>
-  <div class="contact-links">
-    <a href="mailto:mauri0686@gmail.com">mauri0686@gmail.com</a>
-    <a href="https://www.linkedin.com/in/mauricio-acu%C3%B1a-171a9822" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://github.com/mauri0686" target="_blank" rel="noopener">GitHub</a>
-    <span>Buenos Aires, Argentina · Remote (GMT-3)</span>
+<div id="switcher">
+  <button id="btn-terminal" class="active" onclick="showView('terminal')">&gt;_ Terminal</button>
+  <button id="btn-pr" onclick="showView('pr')">⇄ GitHub PR</button>
+</div>
+
+<!-- =====================================================
+     TERMINAL VIEW
+     ===================================================== -->
+<div id="view-terminal" class="view active">
+  <div class="term-window">
+    <div class="term-bar">
+      <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+      <span class="term-title">mauricio@career: ~</span>
+    </div>
+    <div id="term-body"></div>
   </div>
-</header>
+</div>
 
-<main>
-
-  <section class="card">
-    <h2>Summary</h2>
-    <p class="summary">
-      Senior full-stack engineer with 13+ years building .NET applications end to end, from .NET Framework
-      through .NET 9, with C#, Blazor, Angular and React on SQL Server and Azure. For the past three years
-      I've worked fully remote for a US healthcare company, shipping features across backend and frontend
-      in English with a US-based team. Earlier I led distributed teams of 6 to 8 engineers across Argentina,
-      Spain and Peru on logistics and payments platforms. More recently I've been building applied-AI
-      features as well: LLM-powered apps and agents, retrieval-augmented generation over vector databases,
-      and automation pipelines. Open to remote roles, contractor or full-time.
-    </p>
-  </section>
-
-  <section class="card">
-    <h2>Experience</h2>
-
-    <div class="job">
-      <div class="job-head">
-        <span class="job-role">Senior Software Engineer</span>
-        <span class="job-org">Homecare Homebase (US healthcare), via Kopius</span>
-        <span class="job-dates">2023 – Present · Remote (US)</span>
+<!-- =====================================================
+     GITHUB PR VIEW
+     ===================================================== -->
+<div id="view-pr" class="view">
+  <div class="pr-wrap">
+    <div class="pr-header">
+      <h1 class="pr-title">feat: senior .NET engineer available for hire <span class="num">#1</span></h1>
+      <span class="pr-badge">● Open</span>
+      <div class="pr-meta"><b>mauri0686</b> wants to merge into <b>your-team:main</b> from <b>mauri0686:available-now</b></div>
+      <div class="pr-labels" style="margin-top:.7rem">
+        <span class="lbl-remote">remote-ok</span><span class="lbl-senior">senior</span><span class="lbl-contractor">contractor-or-fulltime</span>
       </div>
-      <ul>
-        <li>Build Blazor WebAssembly micro-frontends for clinician workflows: vitals, demographics, visit review, clinical documentation.</li>
-        <li>Integrate typed GraphQL data services and ship feature-flagged rollouts in an Azure DevOps CI/CD pipeline.</li>
-        <li>Work daily in English with a US-based team, testing with xUnit, bUnit and Moq.</li>
-      </ul>
     </div>
 
-    <div class="job">
-      <div class="job-head">
-        <span class="job-role">Project Leader, Payments</span>
-        <span class="job-org">Conekta</span>
-        <span class="job-dates">2022 – 2023</span>
+    <div class="pr-box">
+      <div class="pr-box-head">📝 Description</div>
+      <div class="pr-box-body">
+        Senior full-stack engineer with 13+ years shipping .NET applications end to end, from .NET Framework
+        through .NET 9, with C#, Blazor, Angular and React on SQL Server and Azure. For the past three years,
+        fully remote for a US healthcare company, working daily in English with a US-based team. Earlier led
+        distributed teams of 6–8 engineers across Argentina, Spain and Peru. Recently shipping applied-AI
+        features too: LLM apps and agents, retrieval-augmented generation, automation pipelines.
+        <br><br>Open to remote roles, contractor or full-time.
       </div>
-      <ul>
-        <li>Led a team of 6 developers on a payments product, running Scrum and Jira.</li>
-      </ul>
     </div>
 
-    <div class="job">
-      <div class="job-head">
-        <span class="job-role">IT Lead / Senior .NET Full-Stack Engineer</span>
-        <span class="job-org">Prosegur</span>
-        <span class="job-dates">2015 – 2022</span>
+    <div class="pr-box">
+      <div class="pr-box-head">📁 Files changed <span style="font-weight:400;color:#59636e">(4)</span></div>
+      <div class="pr-box-body">
+
+        <div class="diff-file">
+          <div class="diff-file-head">experience/homecare-homebase.md</div>
+          <div class="diff-meta">@@ 2023 – Present · Remote (US), via Kopius @@</div>
+          <div class="diff-line diff-add">Build Blazor WebAssembly micro-frontends for clinician workflows.</div>
+          <div class="diff-line diff-add">Integrate typed GraphQL services, ship feature-flagged rollouts via Azure DevOps CI/CD.</div>
+          <div class="diff-line diff-add">Work daily in English with a US-based team.</div>
+        </div>
+
+        <div class="diff-file">
+          <div class="diff-file-head">experience/conekta.md</div>
+          <div class="diff-meta">@@ 2022 – 2023 · Project Leader, Payments @@</div>
+          <div class="diff-line diff-add">Led a team of 6 developers on a payments product (Scrum/Jira).</div>
+        </div>
+
+        <div class="diff-file">
+          <div class="diff-file-head">experience/prosegur.md</div>
+          <div class="diff-meta">@@ 2015 – 2022 · IT Lead / Senior .NET Full-Stack Engineer @@</div>
+          <div class="diff-line diff-add">Led a distributed team of 8 across Argentina, Spain and Peru.</div>
+          <div class="diff-line diff-add">Built the core logistics platform for cash-in-transit ops + ATM key management for banks.</div>
+          <div class="diff-line diff-add">Stack: .NET 5, C#, Angular 8-10, SQL Server, Oracle, Docker, GCP, Azure DevOps.</div>
+        </div>
+
+        <div class="diff-file">
+          <div class="diff-file-head">experience/2007-2015-earlier-roles.md</div>
+          <div class="diff-meta">@@ Zoologic, New Digital Way, AXA Assistance, ATS, Grupo Abax @@</div>
+          <div class="diff-line diff-add">Full-stack .NET across e-commerce, insurance, IVR systems and QA automation.</div>
+        </div>
+
       </div>
-      <ul>
-        <li>Led a distributed team of 8 developers across Argentina, Spain and Peru.</li>
-        <li>Built the core logistics platform for cash-in-transit operations, plus an ATM key management system for banks and armored trucks.</li>
-        <li>Stack: .NET 5, C#, Angular 8–10, SQL Server, Oracle, Docker, Google Cloud, Azure DevOps.</li>
-      </ul>
     </div>
 
-    <div class="job">
-      <div class="job-head">
-        <span class="job-role">Earlier .NET roles</span>
-        <span class="job-org">Zoologic, New Digital Way, AXA Assistance, ATS, Grupo Abax</span>
-        <span class="job-dates">2007 – 2015</span>
+    <div class="pr-box">
+      <div class="pr-box-head">✅ Checks <span style="font-weight:400;color:#59636e">— 6 successful</span></div>
+      <div class="pr-box-body" style="padding:0">
+        <div class="checks-row"><span>Languages &amp; frameworks — C#, .NET 9/Core, .NET Framework, TypeScript, Python</span><span class="check-ok">✓ passed</span></div>
+        <div class="checks-row"><span>Frontend — Blazor WebAssembly, Angular, React, SignalR</span><span class="check-ok">✓ passed</span></div>
+        <div class="checks-row"><span>Cloud &amp; DevOps — Azure, Azure DevOps, Docker, Google Cloud</span><span class="check-ok">✓ passed</span></div>
+        <div class="checks-row"><span>Data — SQL Server, Oracle, MySQL, EF Core</span><span class="check-ok">✓ passed</span></div>
+        <div class="checks-row"><span>AI — LLM apps &amp; agents, RAG, prompt engineering</span><span class="check-ok">✓ passed</span></div>
+        <div class="checks-row"><span>English — Upper-Intermediate (B2), 3 yrs with US teams</span><span class="check-ok">✓ passed</span></div>
       </div>
-      <ul>
-        <li>Full-stack .NET work across e-commerce, insurance, IVR systems and QA automation, on .NET Framework MVC and SQL Server.</li>
-      </ul>
     </div>
-  </section>
 
-  <section class="card">
-    <h2>Technical Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-group"><b>Languages &amp; Frameworks</b><span>C#, .NET 9 / .NET Core, .NET Framework, ASP.NET Core, TypeScript, JavaScript, Python</span></div>
-      <div class="skill-group"><b>Frontend</b><span>Blazor WebAssembly, Angular, React, Telerik UI, SignalR</span></div>
-      <div class="skill-group"><b>Cloud &amp; DevOps</b><span>Azure, Azure DevOps, CI/CD, Docker, Google Cloud</span></div>
-      <div class="skill-group"><b>Data</b><span>SQL Server, Oracle, MySQL, MongoDB, EF Core, Dapper</span></div>
-      <div class="skill-group"><b>APIs &amp; Architecture</b><span>REST, GraphQL, Microservices, DDD</span></div>
-      <div class="skill-group"><b>AI</b><span>LLM apps &amp; agents, RAG and embeddings, prompt engineering</span></div>
+    <div class="pr-box">
+      <div class="pr-box-head">💬 Review</div>
+      <div class="comment">
+        <div class="avatar">CI</div>
+        <div>
+          <div class="comment-user">github-actions <span style="color:#59636e;font-weight:400">bot</span></div>
+          <div class="comment-body">All checks have passed. This branch has no conflicts and is ready to merge.</div>
+        </div>
+      </div>
+      <div class="comment">
+        <div class="avatar">MA</div>
+        <div>
+          <div class="comment-user">mauri0686</div>
+          <div class="comment-body">Available immediately. Happy to walk through any of the above in a call — buenos-aires@gmt-3.</div>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <section class="card">
-    <h2>Education &amp; Languages</h2>
-    <p class="summary" style="margin:0 0 .6rem">
-      Universidad Abierta Interamericana. Educación IT: SQL Server, Oracle, .NET Design Patterns, Kanban. PluralSight: Angular, Domain-Driven Design.
-    </p>
-    <p class="summary" style="margin:0">
-      Spanish: Native &nbsp;·&nbsp; English: Upper-Intermediate (B2), 3 years working in English with US teams.
-    </p>
-  </section>
+    <div class="merge-wrap">
+      <a class="merge-btn" href="mailto:mauri0686@gmail.com?subject=Let%27s%20talk">⇄ Merge pull request</a>
+      <div class="merge-sub">mauri0686@gmail.com · <a href="https://www.linkedin.com/in/mauricio-acu%C3%B1a-171a9822" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/mauri0686" target="_blank" rel="noopener">GitHub</a></div>
+    </div>
 
-</main>
+  </div>
+</div>
 
-<footer>
-  Open to remote .NET roles (contractor USD or full-time) &nbsp;·&nbsp; <a href="mailto:mauri0686@gmail.com">mauri0686@gmail.com</a>
-</footer>
+<script>
+function showView(name) {
+  document.querySelectorAll('.view').forEach(function (v) { v.classList.remove('active'); });
+  document.getElementById('view-' + name).classList.add('active');
+  document.getElementById('btn-terminal').classList.toggle('active', name === 'terminal');
+  document.getElementById('btn-pr').classList.toggle('active', name === 'pr');
+  try { localStorage.setItem('cv-view', name); } catch (e) {}
+  if (name === 'terminal' && !termStarted) { termStarted = true; runTerminal(); }
+}
+
+/* ---------- Terminal typewriter sequence ---------- */
+var termStarted = false;
+var termBody = document.getElementById('term-body');
+
+var sequence = [
+  { cmd: 'whoami', out: 'Mauricio Acuña — Senior .NET Full-Stack Engineer\nBuenos Aires, Argentina · Remote (GMT-3)' },
+  { cmd: 'cat summary.txt', out: 'Senior full-stack engineer, 13+ years shipping .NET applications end to end\n(.NET Framework -> .NET 9), with C#, Blazor, Angular and React on SQL Server\nand Azure. 3 years fully remote for a US healthcare company, working daily\nin English. Earlier led distributed teams of 6-8 engineers across AR/ES/PE.\nShipping applied-AI features too: LLM apps & agents, RAG, automation.' },
+  { cmd: 'git log --oneline --reverse experience/', out: '2007-2015  feat: full-stack .NET across e-commerce, insurance, IVR, QA\n2015-2022  feat: lead 8-eng team @ Prosegur, cash-logistics + ATM key mgmt\n2022-2023  feat: lead 6-eng team @ Conekta, payments product\n2023-now   feat: Blazor micro-frontends @ Homecare Homebase (via Kopius)' },
+  { cmd: 'ls skills/', out: 'languages-frameworks/   frontend/   cloud-devops/   data/   ai/\n\nC#  .NET9  .NETCore  .NETFramework  TS  JS  Python\nBlazor  Angular  React  SignalR\nAzure  AzureDevOps  Docker  GCP\nSQLServer  Oracle  MySQL  EFCore\nLLM-agents  RAG  prompt-engineering' },
+  { cmd: 'cat availability.txt', out: 'status: open to remote roles (contractor USD or full-time)\nnotice: immediate\nenglish: upper-intermediate (B2)' },
+  { cmd: 'sudo ./hire-me.sh', out: '[sudo] password for recruiter: ********\nPermission granted.\n-> mailing mauri0686@gmail.com ... done\n-> opening linkedin.com/in/mauricio-acuña ... done\nRun complete. Let\'s talk!' }
+];
+
+function runTerminal() {
+  var i = 0;
+  termBody.innerHTML = '';
+  function nextCmd() {
+    if (i >= sequence.length) {
+      appendPromptLine();
+      return;
+    }
+    typeCmd(sequence[i], function () {
+      i++;
+      setTimeout(nextCmd, 350);
+    });
+  }
+  nextCmd();
+}
+
+function typeCmd(step, done) {
+  var line = document.createElement('div');
+  var promptSpan = document.createElement('span');
+  promptSpan.className = 'prompt';
+  promptSpan.textContent = 'mauricio@career:~$ ';
+  var cmdSpan = document.createElement('span');
+  cmdSpan.className = 'out';
+  line.appendChild(promptSpan);
+  line.appendChild(cmdSpan);
+  termBody.appendChild(line);
+
+  var chars = step.cmd.split('');
+  var idx = 0;
+  var typer = setInterval(function () {
+    cmdSpan.textContent += chars[idx];
+    idx++;
+    termBody.scrollTop = termBody.scrollHeight;
+    if (idx >= chars.length) {
+      clearInterval(typer);
+      setTimeout(function () {
+        var out = document.createElement('div');
+        out.className = 'out dim';
+        out.style.margin = '.25rem 0 .9rem';
+        out.textContent = step.out;
+        termBody.appendChild(out);
+        termBody.scrollTop = termBody.scrollHeight;
+        done();
+      }, 250);
+    }
+  }, 22);
+}
+
+function appendPromptLine() {
+  var line = document.createElement('div');
+  var promptSpan = document.createElement('span');
+  promptSpan.className = 'prompt';
+  promptSpan.textContent = 'mauricio@career:~$ ';
+  var cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  line.appendChild(promptSpan);
+  line.appendChild(cursor);
+  termBody.appendChild(line);
+}
+
+/* boot */
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem('cv-view'); } catch (e) {}
+  if (saved === 'pr') { showView('pr'); } else { showView('terminal'); }
+})();
+</script>
 
 </body>
 </html>
