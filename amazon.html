@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mauricio Acuña — Senior .NET Full-Stack Engineer</title>
+<meta name="description" content="Mauricio Acuña — Senior .NET Full-Stack Engineer, 13+ years, C#/.NET, Angular/React, Azure. Applied AI. Open to remote roles.">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #eaeded; }
+  body { font-family: "Amazon Ember", Arial, Helvetica, sans-serif; color: #0F1111; font-size: 14px; }
+  a { color: #007185; text-decoration: none; }
+  a:hover { color: #C7511F; text-decoration: underline; }
+
+  .topbar { background: #131921; color: #fff; padding: .7rem 1.2rem; display: flex; align-items: center; gap: 1rem; }
+  .topbar .brand { font-size: 1.2rem; font-weight: 700; white-space: nowrap; }
+  .topbar .brand span { color: #ff9900; }
+  .searchbar { flex: 1; max-width: 640px; display: flex; }
+  .searchbar input { flex: 1; border: none; padding: .5rem .7rem; border-radius: 4px 0 0 4px; font-size: .85rem; }
+  .searchbar button { background: #febd69; border: none; padding: .5rem .9rem; border-radius: 0 4px 4px 0; cursor: default; }
+  .topbar .acct { font-size: .78rem; white-space: nowrap; }
+  .topbar .acct b { display: block; font-size: .85rem; }
+
+  .subnav { background: #232f3e; color: #fff; padding: .5rem 1.2rem; font-size: .8rem; display: flex; gap: 1rem; }
+  .subnav span { opacity: .9; }
+
+  .wrap { max-width: 1100px; margin: 1.2rem auto; padding: 0 1.2rem 3rem; }
+  .crumb { font-size: .78rem; color: #565959; margin-bottom: .8rem; }
+
+  .product-card { background: #fff; border-radius: 4px; padding: 1.4rem; display: flex; gap: 2rem; flex-wrap: wrap; }
+  .gallery { width: 300px; flex-shrink: 0; }
+  .gallery-main { border: 1px solid #e1e3e2; border-radius: 6px; background: #f7f8f8; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+  .avatar-big { width: 140px; height: 140px; border-radius: 50%; background: #16324F; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2.6rem; font-weight: 700; }
+  .thumb-row { display: flex; gap: .4rem; margin-top: .6rem; flex-wrap: wrap; }
+  .thumb { border: 1px solid #e1e3e2; border-radius: 4px; padding: .35rem .55rem; font-size: .72rem; font-weight: 600; color: #0F1111; background: #f7f8f8; }
+
+  .info-col { flex: 1; min-width: 280px; }
+  .p-title { font-size: 1.35rem; font-weight: 500; margin: 0 0 .3rem; line-height: 1.35; }
+  .p-brand { font-size: .85rem; color: #007185; margin-bottom: .5rem; }
+  .stars { color: #ffa41c; font-size: 1rem; }
+  .rating-row { display: flex; align-items: center; gap: .5rem; font-size: .85rem; margin-bottom: .8rem; }
+  .rating-row .count { color: #007185; }
+  hr.thin { border: none; border-top: 1px solid #e7e7e7; margin: .8rem 0; }
+
+  .bullets { font-size: .9rem; line-height: 1.7; padding-left: 1.2rem; margin: 0; }
+  .bullets li { margin-bottom: .35rem; }
+  .bullets b { font-weight: 700; }
+
+  .buybox { width: 280px; flex-shrink: 0; border: 1px solid #d5d9d9; border-radius: 8px; padding: 1.1rem; align-self: flex-start; }
+  .price-row { font-size: .82rem; color: #c40000; margin-bottom: .1rem; }
+  .price-big { font-size: 1.7rem; }
+  .price-per { font-size: .8rem; color: #565959; }
+  .instock { color: #007600; font-weight: 600; font-size: 1rem; margin: .8rem 0 .3rem; }
+  .ship-info { font-size: .85rem; color: #0F1111; margin-bottom: .2rem; }
+  .qty-row { font-size: .82rem; margin: .8rem 0; }
+
+  .buy-btn { display: block; width: 100%; text-align: center; background: #ffd814; border: 1px solid #fcd200; border-radius: 20px; padding: .55rem 0; font-size: .9rem; font-weight: 500; margin-bottom: .6rem; cursor: default; }
+  .buy-btn:hover { background: #f7ca00; text-decoration: none; }
+  .buy-btn-2 { display: block; width: 100%; text-align: center; background: #ffa41c; border: 1px solid #ff8f00; border-radius: 20px; padding: .55rem 0; font-size: .9rem; font-weight: 500; cursor: default; }
+  .buy-btn-2:hover { background: #fa8900; text-decoration: none; }
+
+  .secure { font-size: .74rem; color: #565959; margin-top: .8rem; display: flex; gap: .3rem; align-items: center; }
+
+  .section { background: #fff; border-radius: 4px; padding: 1.4rem; margin-top: 1rem; }
+  .section h2 { font-size: 1.15rem; margin: 0 0 1rem; border-bottom: 1px solid #e7e7e7; padding-bottom: .7rem; }
+
+  table.specs { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  table.specs tr:nth-child(odd) { background: #f7f8f8; }
+  table.specs td { padding: .55rem .8rem; border: 1px solid #e7e7e7; }
+  table.specs td:first-child { font-weight: 600; width: 220px; color: #565959; }
+
+  .fbt-row { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+  .fbt-item { display: flex; flex-direction: column; align-items: center; gap: .4rem; font-size: .78rem; text-align: center; width: 100px; }
+  .fbt-box { width: 72px; height: 72px; border: 1px solid #e1e3e2; border-radius: 6px; background: #f7f8f8; display: flex; align-items: center; justify-content: center; font-size: .68rem; font-weight: 700; padding: .3rem; }
+  .fbt-plus { font-size: 1.4rem; color: #565959; }
+
+  .review-item { border-bottom: 1px solid #e7e7e7; padding: 1rem 0; }
+  .review-item:last-child { border-bottom: none; }
+  .review-head { display: flex; align-items: center; gap: .6rem; margin-bottom: .3rem; }
+  .review-avatar { width: 26px; height: 26px; border-radius: 50%; background: #e1e3e2; color: #565959; display: flex; align-items: center; justify-content: center; font-size: .65rem; font-weight: 700; }
+  .review-title { font-weight: 700; margin: .3rem 0; }
+  .review-verified { font-size: .74rem; color: #C7511F; font-weight: 600; }
+
+  .footer-nav { text-align: center; font-family: monospace; font-size: .8rem; color: #565959; margin-top: 1.5rem; }
+
+  @media (max-width: 720px) {
+    .product-card { flex-direction: column; }
+    .buybox { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">talent<span>hire</span></div>
+  <div class="searchbar">
+    <input type="text" value="senior .NET full-stack engineer, remote" disabled>
+    <button disabled>🔍</button>
+  </div>
+  <div class="acct"><span>Hello, Recruiter</span><b>Candidates &amp; Offers</b></div>
+  <div class="acct"><span>Shortlist</span><b>🛒 1</b></div>
+</div>
+<div class="subnav">
+  <span>☰ All Roles</span><span>Full-Stack</span><span>.NET / C#</span><span>Remote LATAM</span><span>Senior</span><span>Contractor-friendly</span>
+</div>
+
+<div class="wrap">
+  <div class="crumb">Talent Marketplace › Software Engineers › Senior .NET Full-Stack</div>
+
+  <div class="product-card">
+    <div class="gallery">
+      <div class="gallery-main"><div class="avatar-big">MA</div></div>
+      <div class="thumb-row">
+        <span class="thumb">C# / .NET</span><span class="thumb">Angular / React</span><span class="thumb">Azure</span><span class="thumb">SQL Server</span><span class="thumb">AI / LLM</span>
+      </div>
+    </div>
+
+    <div class="info-col">
+      <h1 class="p-title">Mauricio Acuña — Senior .NET Full-Stack Engineer, 13+ Years, Remote-Ready (Contractor or Full-Time)</h1>
+      <div class="p-brand">Visit the <a href="https://github.com/mauri0686" target="_blank" rel="noopener">mauri0686</a> Store</div>
+      <div class="rating-row">
+        <span class="stars">★★★★★</span> <span class="count">4.9 — battle-tested since 2011</span>
+      </div>
+      <hr class="thin">
+      <ul class="bullets">
+        <li><b>13+ years shipping .NET</b> end to end — from .NET Framework through .NET 9, C#, Blazor, Angular and React on SQL Server and Azure.</li>
+        <li><b>3 years fully remote</b> for a US healthcare company, working daily in English with a US-based team.</li>
+        <li><b>Led distributed teams of 6–8 engineers</b> across Argentina, Spain and Peru on logistics and payments platforms.</li>
+        <li><b>Applied-AI features shipped</b>: LLM apps &amp; agents, retrieval-augmented generation, automation pipelines.</li>
+        <li><b>Availability:</b> immediate. <b>Modality:</b> contractor (USD) or full-time.</li>
+      </ul>
+    </div>
+
+    <div class="buybox">
+      <div class="price-row">Rate</div>
+      <div class="price-big">$5,000<span class="price-per">/ month</span></div>
+      <div style="font-size:.8rem;color:#565959">(contractor, flexible) — also open to local employment</div>
+      <hr class="thin">
+      <div class="instock">✔ In stock — available now</div>
+      <div class="ship-info"><b>Ships to:</b> Anywhere, remote (GMT-3 friendly hours)</div>
+      <div class="ship-info"><b>Delivery:</b> Immediate notice period</div>
+      <div class="qty-row">Positions: <b>1</b></div>
+      <a class="buy-btn" href="mailto:mauri0686@gmail.com?subject=Let%27s%20talk">Add to Team</a>
+      <a class="buy-btn-2" href="mailto:mauri0686@gmail.com?subject=Hiring%20now">Hire Now</a>
+      <div class="secure">🔒 Secure contact · no recruiting fees</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Product information</h2>
+    <table class="specs">
+      <tr><td>Role</td><td>Senior .NET Full-Stack Engineer</td></tr>
+      <tr><td>Years of experience</td><td>13+</td></tr>
+      <tr><td>Core stack</td><td>C#, .NET Framework → .NET 9, ASP.NET Core, Blazor, Angular, React</td></tr>
+      <tr><td>Cloud &amp; DevOps</td><td>Azure, Azure DevOps, Docker, Google Cloud</td></tr>
+      <tr><td>Data</td><td>SQL Server, Oracle, MySQL, EF Core</td></tr>
+      <tr><td>Applied AI</td><td>LLM apps &amp; agents, RAG, prompt engineering</td></tr>
+      <tr><td>English level</td><td>Upper-Intermediate (B2) — 3 years working daily with US teams</td></tr>
+      <tr><td>Location</td><td>Buenos Aires, Argentina (GMT-3)</td></tr>
+      <tr><td>Work modality</td><td>Remote, contractor (USD) or full-time employment</td></tr>
+      <tr><td>Availability</td><td>Immediate</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Frequently paired with</h2>
+    <div class="fbt-row">
+      <div class="fbt-item"><div class="fbt-box">Azure DevOps</div>CI/CD pipelines</div>
+      <div class="fbt-plus">+</div>
+      <div class="fbt-item"><div class="fbt-box">SQL Server</div>Data layer</div>
+      <div class="fbt-plus">+</div>
+      <div class="fbt-item"><div class="fbt-box">Angular / React</div>Frontend</div>
+      <div class="fbt-plus">=</div>
+      <div class="fbt-item"><div class="fbt-box" style="background:#fff3d6;border-color:#ffa41c">Shipped feature</div>on time</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Career highlights ★★★★★</h2>
+    <div class="review-item">
+      <div class="review-head"><span class="stars">★★★★★</span></div>
+      <div class="review-title">Shipped Blazor micro-frontends to production for a US healthcare platform</div>
+      <div class="review-verified">✔ Verified — Homecare Homebase, via Kopius, 2023–present</div>
+      Built and shipped clinician-workflow features (vitals, demographics, visit review) end to end, working daily in English with a US-based team, on an Azure DevOps CI/CD pipeline.
+    </div>
+    <div class="review-item">
+      <div class="review-head"><span class="stars">★★★★★</span></div>
+      <div class="review-title">Led a distributed team of 8 across 3 countries</div>
+      <div class="review-verified">✔ Verified — Prosegur, 2015–2022</div>
+      Built the core logistics platform for cash-in-transit operations, plus an ATM key management system for banks and armored trucks.
+    </div>
+    <div class="review-item">
+      <div class="review-head"><span class="stars">★★★★★</span></div>
+      <div class="review-title">Led a 6-developer team on a live payments product</div>
+      <div class="review-verified">✔ Verified — Conekta, 2022–2023</div>
+      Ran the team with Scrum and Jira on a production payments platform.
+    </div>
+  </div>
+
+  <div class="footer-nav">
+    <a href="MauricioAcuna-CV-Product.pdf" target="_blank" rel="noopener">↓ download as PDF</a> · <a href="index.html">view as an interactive terminal</a> · <a href="pr.html">view as a GitHub PR</a> · <a href="mailto:mauri0686@gmail.com">mauri0686@gmail.com</a>
+  </div>
+
+</div>
+
+</body>
+</html>

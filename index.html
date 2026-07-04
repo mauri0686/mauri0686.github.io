@@ -10,29 +10,9 @@
   html, body { margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 
-  /* ---------- Switcher bar ---------- */
-  #switcher {
-    position: sticky; top: 0; z-index: 50;
-    display: flex; justify-content: center; gap: .5rem;
-    padding: .6rem; background: #0d1117; border-bottom: 1px solid #30363d;
-  }
-  #switcher button {
-    font-family: inherit; font-size: .85rem; font-weight: 600;
-    padding: .5rem 1rem; border-radius: 6px; border: 1px solid #30363d;
-    background: #21262d; color: #8b949e; cursor: pointer; transition: all .15s;
-  }
-  #switcher button.active { background: #238636; color: #fff; border-color: #2ea043; }
-  #switcher button:hover:not(.active) { background: #30363d; color: #fff; }
-
-  .view { display: none; }
-  .view.active { display: block; }
-
-  /* =====================================================
-     TERMINAL VIEW
-     ===================================================== */
   #view-terminal {
-    background: #0a0e14; color: #c9d1d9; min-height: calc(100vh - 52px);
-    padding: 2rem 1rem 4rem;
+    background: #0a0e14; color: #c9d1d9; min-height: 100vh;
+    padding: 3rem 1rem 2rem;
   }
   .term-window {
     max-width: 760px; margin: 0 auto; background: #0d1117;
@@ -48,71 +28,22 @@
     font-size: .92rem; padding: 1.2rem 1.4rem; min-height: 420px; white-space: pre-wrap; word-break: break-word;
   }
   .prompt { color: #7ee787; }
-  .path { color: #79c0ff; }
   .out { color: #c9d1d9; }
   .dim { color: #6e7681; }
-  .accent { color: #d2a8ff; }
   .cursor { display: inline-block; width: 8px; height: 1.05em; background: #c9d1d9; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 
-  /* =====================================================
-     GITHUB PR VIEW
-     ===================================================== */
-  #view-pr { background: #f6f8fa; color: #1F2328; min-height: calc(100vh - 52px); }
-  .pr-wrap { max-width: 860px; margin: 0 auto; padding: 1.6rem 1.2rem 4rem; }
-  .pr-header { border-bottom: 1px solid #d0d7de; padding-bottom: 1rem; margin-bottom: 1.2rem; }
-  .pr-title { font-size: 1.6rem; font-weight: 600; margin: 0 0 .5rem; }
-  .pr-title .num { color: #59636e; font-weight: 400; }
-  .pr-badge { display: inline-flex; align-items: center; gap: .3rem; background: #1a7f37; color: #fff; font-size: .85rem; font-weight: 600; padding: .3rem .7rem; border-radius: 2em; }
-  .pr-meta { color: #59636e; font-size: .92rem; margin-top: .6rem; }
-  .pr-labels span { display: inline-block; font-size: .78rem; font-weight: 500; padding: .1rem .6rem; border-radius: 2em; margin-right: .3rem; border: 1px solid transparent; }
-  .lbl-remote { background: #ddf4ff; color: #0969da; }
-  .lbl-senior { background: #fff1e5; color: #bc4c00; }
-  .lbl-contractor { background: #f6e8ff; color: #8250df; }
+  .below { max-width: 760px; margin: 1rem auto 0; text-align: center; font-family: monospace; font-size: .82rem; color: #6e7681; }
+  .below a { color: #7ee787; text-decoration: none; }
+  .below a:hover { text-decoration: underline; }
+  .below .sep { margin: 0 .5rem; opacity: .5; }
 
-  .pr-box { background: #fff; border: 1px solid #d0d7de; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
-  .pr-box-head { background: #f6f8fa; border-bottom: 1px solid #d0d7de; padding: .6rem 1rem; font-size: .88rem; font-weight: 600; display: flex; align-items: center; gap: .5rem; }
-  .pr-box-body { padding: 1rem 1.2rem; font-size: .95rem; line-height: 1.6; }
-
-  .diff-file { border: 1px solid #d0d7de; border-radius: 6px; margin-bottom: .8rem; overflow: hidden; }
-  .diff-file-head { background: #f6f8fa; padding: .5rem .9rem; font-family: monospace; font-size: .85rem; font-weight: 600; border-bottom: 1px solid #d0d7de; }
-  .diff-line { font-family: "SFMono-Regular", Consolas, Menlo, monospace; font-size: .84rem; padding: .15rem .9rem; white-space: pre-wrap; }
-  .diff-add { background: #e6ffec; color: #1a7f37; }
-  .diff-add::before { content: "+ "; }
-  .diff-meta { background: #f6f8fa; color: #59636e; padding: .15rem .9rem; font-family: monospace; font-size: .8rem; }
-
-  .checks-row { display: flex; align-items: center; justify-content: space-between; padding: .55rem 1rem; border-bottom: 1px solid #eaeef2; font-size: .88rem; }
-  .checks-row:last-child { border-bottom: none; }
-  .check-ok { color: #1a7f37; font-weight: 600; }
-
-  .comment { display: flex; gap: .7rem; padding: .9rem 1.2rem; border-bottom: 1px solid #eaeef2; }
-  .comment:last-child { border-bottom: none; }
-  .avatar { width: 32px; height: 32px; border-radius: 50%; background: #24292f; color: #fff; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; flex-shrink: 0; }
-  .comment-user { font-weight: 600; font-size: .9rem; }
-  .comment-body { font-size: .9rem; color: #1F2328; margin-top: .2rem; }
-
-  .merge-btn { display: inline-flex; align-items: center; gap: .5rem; background: #8250df; color: #fff; font-weight: 600; font-size: 1rem; padding: .75rem 1.4rem; border-radius: 6px; text-decoration: none; border: none; cursor: pointer; }
-  .merge-btn:hover { background: #6c3ed1; }
-  .merge-wrap { text-align: center; margin-top: 1.4rem; }
-  .merge-sub { color: #59636e; font-size: .85rem; margin-top: .6rem; }
-
-  @media (max-width: 560px) {
-    .pr-title { font-size: 1.25rem; }
-    #term-body { font-size: .82rem; }
-  }
+  @media (max-width: 560px) { #term-body { font-size: .82rem; } }
 </style>
 </head>
 <body>
 
-<div id="switcher">
-  <button id="btn-terminal" class="active" onclick="showView('terminal')">&gt;_ Terminal</button>
-  <button id="btn-pr" onclick="showView('pr')">⇄ GitHub PR</button>
-</div>
-
-<!-- =====================================================
-     TERMINAL VIEW
-     ===================================================== -->
-<div id="view-terminal" class="view active">
+<div id="view-terminal">
   <div class="term-window">
     <div class="term-bar">
       <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
@@ -120,122 +51,16 @@
     </div>
     <div id="term-body"></div>
   </div>
-  <div style="text-align:center;margin-top:1rem;font-family:monospace;font-size:.82rem">
-    <a href="MauricioAcuna-CV-Terminal.pdf" target="_blank" rel="noopener" style="color:#7ee787">↓ download as PDF</a>
-  </div>
-</div>
-
-<!-- =====================================================
-     GITHUB PR VIEW
-     ===================================================== -->
-<div id="view-pr" class="view">
-  <div class="pr-wrap">
-    <div class="pr-header">
-      <h1 class="pr-title">feat: senior .NET engineer available for hire <span class="num">#1</span></h1>
-      <span class="pr-badge">● Open</span>
-      <div class="pr-meta"><b>mauri0686</b> wants to merge into <b>your-team:main</b> from <b>mauri0686:available-now</b></div>
-      <div class="pr-labels" style="margin-top:.7rem">
-        <span class="lbl-remote">remote-ok</span><span class="lbl-senior">senior</span><span class="lbl-contractor">contractor-or-fulltime</span>
-      </div>
-    </div>
-
-    <div class="pr-box">
-      <div class="pr-box-head">📝 Description</div>
-      <div class="pr-box-body">
-        Senior full-stack engineer with 13+ years shipping .NET applications end to end, from .NET Framework
-        through .NET 9, with C#, Blazor, Angular and React on SQL Server and Azure. For the past three years,
-        fully remote for a US healthcare company, working daily in English with a US-based team. Earlier led
-        distributed teams of 6–8 engineers across Argentina, Spain and Peru. Recently shipping applied-AI
-        features too: LLM apps and agents, retrieval-augmented generation, automation pipelines.
-        <br><br>Open to remote roles, contractor or full-time.
-      </div>
-    </div>
-
-    <div class="pr-box">
-      <div class="pr-box-head">📁 Files changed <span style="font-weight:400;color:#59636e">(4)</span></div>
-      <div class="pr-box-body">
-
-        <div class="diff-file">
-          <div class="diff-file-head">experience/homecare-homebase.md</div>
-          <div class="diff-meta">@@ 2023 – Present · Remote (US), via Kopius @@</div>
-          <div class="diff-line diff-add">Build Blazor WebAssembly micro-frontends for clinician workflows.</div>
-          <div class="diff-line diff-add">Integrate typed GraphQL services, ship feature-flagged rollouts via Azure DevOps CI/CD.</div>
-          <div class="diff-line diff-add">Work daily in English with a US-based team.</div>
-        </div>
-
-        <div class="diff-file">
-          <div class="diff-file-head">experience/conekta.md</div>
-          <div class="diff-meta">@@ 2022 – 2023 · Project Leader, Payments @@</div>
-          <div class="diff-line diff-add">Led a team of 6 developers on a payments product (Scrum/Jira).</div>
-        </div>
-
-        <div class="diff-file">
-          <div class="diff-file-head">experience/prosegur.md</div>
-          <div class="diff-meta">@@ 2015 – 2022 · IT Lead / Senior .NET Full-Stack Engineer @@</div>
-          <div class="diff-line diff-add">Led a distributed team of 8 across Argentina, Spain and Peru.</div>
-          <div class="diff-line diff-add">Built the core logistics platform for cash-in-transit ops + ATM key management for banks.</div>
-          <div class="diff-line diff-add">Stack: .NET 5, C#, Angular 8-10, SQL Server, Oracle, Docker, GCP, Azure DevOps.</div>
-        </div>
-
-        <div class="diff-file">
-          <div class="diff-file-head">experience/2007-2015-earlier-roles.md</div>
-          <div class="diff-meta">@@ Zoologic, New Digital Way, AXA Assistance, ATS, Grupo Abax @@</div>
-          <div class="diff-line diff-add">Full-stack .NET across e-commerce, insurance, IVR systems and QA automation.</div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="pr-box">
-      <div class="pr-box-head">✅ Checks <span style="font-weight:400;color:#59636e">— 6 successful</span></div>
-      <div class="pr-box-body" style="padding:0">
-        <div class="checks-row"><span>Languages &amp; frameworks — C#, .NET 9/Core, .NET Framework, TypeScript, Python</span><span class="check-ok">✓ passed</span></div>
-        <div class="checks-row"><span>Frontend — Blazor WebAssembly, Angular, React, SignalR</span><span class="check-ok">✓ passed</span></div>
-        <div class="checks-row"><span>Cloud &amp; DevOps — Azure, Azure DevOps, Docker, Google Cloud</span><span class="check-ok">✓ passed</span></div>
-        <div class="checks-row"><span>Data — SQL Server, Oracle, MySQL, EF Core</span><span class="check-ok">✓ passed</span></div>
-        <div class="checks-row"><span>AI — LLM apps &amp; agents, RAG, prompt engineering</span><span class="check-ok">✓ passed</span></div>
-        <div class="checks-row"><span>English — Upper-Intermediate (B2), 3 yrs with US teams</span><span class="check-ok">✓ passed</span></div>
-      </div>
-    </div>
-
-    <div class="pr-box">
-      <div class="pr-box-head">💬 Review</div>
-      <div class="comment">
-        <div class="avatar">CI</div>
-        <div>
-          <div class="comment-user">github-actions <span style="color:#59636e;font-weight:400">bot</span></div>
-          <div class="comment-body">All checks have passed. This branch has no conflicts and is ready to merge.</div>
-        </div>
-      </div>
-      <div class="comment">
-        <div class="avatar">MA</div>
-        <div>
-          <div class="comment-user">mauri0686</div>
-          <div class="comment-body">Available immediately. Happy to walk through any of the above in a call — buenos-aires@gmt-3.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="merge-wrap">
-      <a class="merge-btn" href="mailto:mauri0686@gmail.com?subject=Let%27s%20talk">⇄ Merge pull request</a>
-      <div class="merge-sub">mauri0686@gmail.com · <a href="https://www.linkedin.com/in/mauricio-acu%C3%B1a-171a9822" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/mauri0686" target="_blank" rel="noopener">GitHub</a> · <a href="MauricioAcuna-CV-Terminal.pdf" target="_blank" rel="noopener">Download PDF</a></div>
-    </div>
-
+  <div class="below">
+    <a href="MauricioAcuna-CV-Terminal.pdf" target="_blank" rel="noopener">↓ download as PDF</a>
+    <span class="sep">·</span>
+    <a href="pr.html">view as a GitHub PR</a>
+    <span class="sep">·</span>
+    <a href="amazon.html">view as a product page</a>
   </div>
 </div>
 
 <script>
-function showView(name) {
-  document.querySelectorAll('.view').forEach(function (v) { v.classList.remove('active'); });
-  document.getElementById('view-' + name).classList.add('active');
-  document.getElementById('btn-terminal').classList.toggle('active', name === 'terminal');
-  document.getElementById('btn-pr').classList.toggle('active', name === 'pr');
-  try { localStorage.setItem('cv-view', name); } catch (e) {}
-  if (name === 'terminal' && !termStarted) { termStarted = true; runTerminal(); }
-}
-
-/* ---------- Terminal typewriter sequence ---------- */
-var termStarted = false;
 var termBody = document.getElementById('term-body');
 
 var sequence = [
@@ -251,14 +76,8 @@ function runTerminal() {
   var i = 0;
   termBody.innerHTML = '';
   function nextCmd() {
-    if (i >= sequence.length) {
-      appendPromptLine();
-      return;
-    }
-    typeCmd(sequence[i], function () {
-      i++;
-      setTimeout(nextCmd, 350);
-    });
+    if (i >= sequence.length) { appendPromptLine(); return; }
+    typeCmd(sequence[i], function () { i++; setTimeout(nextCmd, 350); });
   }
   nextCmd();
 }
@@ -307,12 +126,7 @@ function appendPromptLine() {
   termBody.appendChild(line);
 }
 
-/* boot */
-(function () {
-  var saved = null;
-  try { saved = localStorage.getItem('cv-view'); } catch (e) {}
-  if (saved === 'pr') { showView('pr'); } else { showView('terminal'); }
-})();
+runTerminal();
 </script>
 
 </body>

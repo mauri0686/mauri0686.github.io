@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>feat: senior .NET engineer available for hire #1 · mauri0686/career</title>
+<meta name="description" content="Mauricio Acuña — Senior .NET Full-Stack Engineer, presented as a GitHub pull request. 13+ years, C#/.NET, Angular/React, Azure, Applied AI.">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #1F2328; font-size: 14px; }
+  a { color: #0969da; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code, .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+
+  .gh-topbar { background: #24292f; color: #fff; padding: .6rem 0; }
+  .gh-topbar-inner { max-width: 1180px; margin: 0 auto; padding: 0 1.2rem; display: flex; align-items: center; gap: .5rem; font-size: .9rem; }
+  .gh-topbar .oct { opacity: .9; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 1.4rem 1.2rem 4rem; }
+  .breadcrumb { font-size: 1.25rem; color: #59636e; margin-bottom: .3rem; }
+  .breadcrumb a { color: #0969da; font-weight: 600; }
+
+  .pr-title-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; }
+  .pr-title { font-size: 1.85rem; font-weight: 600; line-height: 1.25; }
+  .pr-num { color: #59636e; font-weight: 300; }
+
+  .state-row { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .pill { display: inline-flex; align-items: center; gap: .35rem; font-size: .85rem; font-weight: 600; padding: .35rem .8rem; border-radius: 2em; }
+  .pill-open { background: #1f883d; color: #fff; }
+  .meta-text { color: #59636e; font-size: .95rem; }
+  .meta-text code { background: #eaeef2; padding: .1rem .4rem; border-radius: 4px; font-size: .82rem; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 1.4rem; border-bottom: 1px solid #d0d7de; margin-bottom: 1.3rem; }
+  .tab { padding: .8rem .1rem; font-size: .9rem; font-weight: 500; color: #59636e; cursor: pointer; border-bottom: 2px solid transparent; user-select: none; }
+  .tab .count { background: #eaeef2; color: #1F2328; border-radius: 2em; font-size: .78rem; padding: .05rem .5rem; margin-left: .3rem; }
+  .tab.active { color: #1F2328; font-weight: 600; border-bottom-color: #fd8c73; }
+  .tab:hover:not(.active) { color: #1F2328; }
+
+  .layout { display: flex; gap: 2rem; align-items: flex-start; }
+  .main-col { flex: 1; min-width: 0; }
+  .side-col { width: 260px; flex-shrink: 0; }
+
+  .tabpanel { display: none; }
+  .tabpanel.active { display: block; }
+
+  /* Conversation */
+  .commentbox { border: 1px solid #d0d7de; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
+  .commentbox-head { background: #f6f8fa; border-bottom: 1px solid #d0d7de; padding: .6rem .9rem; font-size: .85rem; display: flex; align-items: center; gap: .5rem; }
+  .commentbox-body { padding: 1rem 1.1rem; font-size: .92rem; line-height: 1.65; }
+  .avatar { border-radius: 50%; background: #363b42; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .av-md { width: 32px; height: 32px; font-size: .78rem; }
+  .av-sm { width: 20px; height: 20px; font-size: .6rem; }
+
+  .timeline-item { display: flex; align-items: center; gap: .6rem; color: #59636e; font-size: .85rem; padding: .5rem 0; margin-left: 4px; }
+
+  .checksum-box { display: flex; align-items: center; gap: .6rem; background: #dafbe1; border: 1px solid #aceebb; border-radius: 8px; padding: .8rem 1rem; margin-bottom: 1rem; }
+  .checksum-box .ic { color: #1a7f37; font-size: 1.3rem; }
+  .checksum-box b { font-size: .92rem; }
+  .checksum-box .sub { color: #59636e; font-size: .82rem; }
+
+  .commentform { border: 1px solid #d0d7de; border-radius: 8px; padding: .9rem 1rem; margin-bottom: 1.3rem; }
+  .commentform textarea { width: 100%; min-height: 70px; border: 1px solid #d0d7de; border-radius: 6px; padding: .6rem; font-family: inherit; font-size: .9rem; color: #6e7781; resize: none; background: #f6f8fa; }
+  .commentform-actions { display: flex; justify-content: flex-end; margin-top: .6rem; }
+  .btn { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; font-size: .88rem; padding: .45rem 1rem; border-radius: 6px; border: 1px solid rgba(27,31,36,.15); cursor: default; }
+  .btn-gray { background: #f6f8fa; color: #99a1ab; }
+  .btn-green { background: #1f883d; color: #fff; font-size: 1rem; padding: .75rem 1.3rem; border: none; }
+  .btn-green:hover { background: #1a7f37; text-decoration: none; }
+
+  .merge-section { text-align: left; }
+  .merge-note { color: #59636e; font-size: .85rem; margin-top: .6rem; }
+
+  /* Sidebar */
+  .side-box { border-bottom: 1px solid #d0d7de; padding: .9rem 0; }
+  .side-box:first-child { padding-top: 0; }
+  .side-label { font-size: .82rem; font-weight: 600; color: #1F2328; margin-bottom: .5rem; display: flex; justify-content: space-between; }
+  .side-content { font-size: .85rem; color: #59636e; }
+  .side-person { display: flex; align-items: center; gap: .5rem; color: #1F2328; font-size: .85rem; }
+  .lbl { display: inline-block; font-size: .78rem; font-weight: 500; padding: .12rem .6rem; border-radius: 2em; margin: 0 .3rem .3rem 0; }
+  .lbl-remote { background: #ddf4ff; color: #0969da; }
+  .lbl-senior { background: #fff1e5; color: #bc4c00; }
+  .lbl-contractor { background: #f6e8ff; color: #8250df; }
+
+  /* Commits tab */
+  .commit-row { display: flex; align-items: center; justify-content: space-between; padding: .8rem 1rem; border-bottom: 1px solid #d0d7de; }
+  .commit-row:last-child { border-bottom: none; }
+  .commit-left { display: flex; align-items: center; gap: .7rem; }
+  .commit-msg { font-weight: 600; font-size: .88rem; }
+  .commit-sub { color: #59636e; font-size: .78rem; margin-top: .1rem; }
+  .commit-sha { font-family: monospace; font-size: .78rem; color: #0969da; background: #f6f8fa; padding: .15rem .5rem; border-radius: 6px; border: 1px solid #d0d7de; }
+  .commits-box { border: 1px solid #d0d7de; border-radius: 8px; overflow: hidden; }
+
+  /* Files changed */
+  .diff-file { border: 1px solid #d0d7de; border-radius: 6px; margin-bottom: .9rem; overflow: hidden; }
+  .diff-file-head { background: #f6f8fa; padding: .5rem .9rem; font-family: monospace; font-size: .84rem; font-weight: 600; border-bottom: 1px solid #d0d7de; display: flex; justify-content: space-between; }
+  .diff-file-head .stat { color: #1a7f37; font-weight: 400; font-size: .78rem; }
+  .diff-line { font-family: monospace; font-size: .82rem; padding: .12rem .9rem; white-space: pre-wrap; }
+  .diff-add { background: #e6ffec; color: #1a7f37; }
+  .diff-add::before { content: "+ "; color: #59636e; }
+  .diff-meta { background: #f6f8fa; color: #59636e; padding: .18rem .9rem; font-family: monospace; font-size: .78rem; border-bottom: 1px solid #eaeef2; }
+
+  .checks-row { display: flex; align-items: center; justify-content: space-between; padding: .6rem 1rem; border-bottom: 1px solid #eaeef2; font-size: .87rem; }
+  .checks-row:last-child { border-bottom: none; }
+  .check-ok { color: #1a7f37; font-weight: 600; display: flex; align-items: center; gap: .3rem; }
+  .checks-box { border: 1px solid #d0d7de; border-radius: 8px; overflow: hidden; }
+
+  .below { text-align: center; font-family: monospace; font-size: .82rem; color: #8b949e; margin-top: 2rem; }
+  .below a { color: #0969da; }
+
+  @media (max-width: 820px) {
+    .layout { flex-direction: column; }
+    .side-col { width: 100%; }
+    .pr-title { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="gh-topbar">
+  <div class="gh-topbar-inner">
+    <span class="oct">⌥</span> <span>mauri0686</span> / <b>career</b>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="pr-title-row">
+    <span class="pr-title">feat: senior .NET engineer available for hire <span class="pr-num">#1</span></span>
+  </div>
+
+  <div class="state-row">
+    <span class="pill pill-open">⑂ Open</span>
+    <span class="meta-text"><b>mauri0686</b> wants to merge 4 commits into <code>your-team:main</code> from <code>mauri0686:available-now</code></span>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="conversation">Conversation</div>
+    <div class="tab" data-tab="commits">Commits <span class="count">4</span></div>
+    <div class="tab" data-tab="checks">Checks <span class="count">6</span></div>
+    <div class="tab" data-tab="files">Files changed <span class="count">4</span></div>
+  </div>
+
+  <div class="layout">
+    <div class="main-col">
+
+      <!-- CONVERSATION -->
+      <div class="tabpanel active" id="tab-conversation">
+
+        <div class="commentbox">
+          <div class="commentbox-head">
+            <div class="avatar av-sm">MA</div>
+            <span><b>mauri0686</b> commented</span>
+          </div>
+          <div class="commentbox-body">
+            Senior full-stack engineer with 13+ years shipping .NET applications end to end, from .NET Framework
+            through .NET 9, with C#, Blazor, Angular and React on SQL Server and Azure. For the past three years,
+            fully remote for a US healthcare company, working daily in English with a US-based team. Earlier led
+            distributed teams of 6–8 engineers across Argentina, Spain and Peru. Recently shipping applied-AI
+            features too: LLM apps and agents, retrieval-augmented generation, automation pipelines.
+            <br><br>Open to remote roles, contractor or full-time.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="avatar av-sm">MA</div>
+          <span><b>mauri0686</b> added the <span class="lbl lbl-remote">remote-ok</span><span class="lbl lbl-senior">senior</span><span class="lbl lbl-contractor">contractor-or-fulltime</span> labels</span>
+        </div>
+
+        <div class="checksum-box">
+          <span class="ic">✓</span>
+          <div>
+            <div><b>All checks have passed</b></div>
+            <div class="sub">6 successful checks</div>
+          </div>
+        </div>
+
+        <div class="commentbox">
+          <div class="commentbox-head">
+            <div class="avatar av-sm" style="background:#0969da">CI</div>
+            <span><b>github-actions</b> <span style="color:#59636e">bot commented</span></span>
+          </div>
+          <div class="commentbox-body">All checks have passed. This branch has no conflicts and is ready to merge.</div>
+        </div>
+
+        <div class="commentbox">
+          <div class="commentbox-head">
+            <div class="avatar av-sm">MA</div>
+            <span><b>mauri0686</b> commented</span>
+          </div>
+          <div class="commentbox-body">Available immediately. Happy to walk through any of the above in a call.</div>
+        </div>
+
+        <div class="commentform">
+          <textarea placeholder="Leave a comment" disabled></textarea>
+          <div class="commentform-actions"><span class="btn btn-gray">Comment</span></div>
+        </div>
+
+        <div class="merge-section">
+          <a class="btn btn-green" href="mailto:mauri0686@gmail.com?subject=Let%27s%20talk">⑂ Merge pull request</a>
+          <div class="merge-note">Successfully merging this pull request may close 1 open position.</div>
+        </div>
+
+      </div>
+
+      <!-- COMMITS -->
+      <div class="tabpanel" id="tab-commits">
+        <div class="commits-box">
+          <div class="commit-row">
+            <div class="commit-left">
+              <div class="avatar av-sm">MA</div>
+              <div><div class="commit-msg">feat: Blazor WASM micro-frontends @ Homecare Homebase (via Kopius)</div><div class="commit-sub">mauri0686 committed · 2023 – Present, Remote (US)</div></div>
+            </div>
+            <span class="commit-sha">a1c9e02</span>
+          </div>
+          <div class="commit-row">
+            <div class="commit-left">
+              <div class="avatar av-sm">MA</div>
+              <div><div class="commit-msg">feat: lead 6-eng team @ Conekta, payments product</div><div class="commit-sub">mauri0686 committed · 2022 – 2023</div></div>
+            </div>
+            <span class="commit-sha">7f3b81d</span>
+          </div>
+          <div class="commit-row">
+            <div class="commit-left">
+              <div class="avatar av-sm">MA</div>
+              <div><div class="commit-msg">feat: lead 8-eng team @ Prosegur, cash-logistics + ATM key mgmt</div><div class="commit-sub">mauri0686 committed · 2015 – 2022</div></div>
+            </div>
+            <span class="commit-sha">4d02c5a</span>
+          </div>
+          <div class="commit-row">
+            <div class="commit-left">
+              <div class="avatar av-sm">MA</div>
+              <div><div class="commit-msg">feat: full-stack .NET across e-commerce, insurance, IVR, QA</div><div class="commit-sub">mauri0686 committed · 2007 – 2015</div></div>
+            </div>
+            <span class="commit-sha">e88a013</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHECKS -->
+      <div class="tabpanel" id="tab-checks">
+        <div class="checks-box">
+          <div class="checks-row"><span>Languages &amp; frameworks — C#, .NET 9/Core, .NET Framework, TypeScript, Python</span><span class="check-ok">✓ passed</span></div>
+          <div class="checks-row"><span>Frontend — Blazor WebAssembly, Angular, React, SignalR</span><span class="check-ok">✓ passed</span></div>
+          <div class="checks-row"><span>Cloud &amp; DevOps — Azure, Azure DevOps, Docker, Google Cloud</span><span class="check-ok">✓ passed</span></div>
+          <div class="checks-row"><span>Data — SQL Server, Oracle, MySQL, EF Core</span><span class="check-ok">✓ passed</span></div>
+          <div class="checks-row"><span>AI — LLM apps &amp; agents, RAG, prompt engineering</span><span class="check-ok">✓ passed</span></div>
+          <div class="checks-row"><span>English — Upper-Intermediate (B2), 3 yrs with US teams</span><span class="check-ok">✓ passed</span></div>
+        </div>
+      </div>
+
+      <!-- FILES CHANGED -->
+      <div class="tabpanel" id="tab-files">
+
+        <div class="diff-file">
+          <div class="diff-file-head"><span>experience/homecare-homebase.md</span><span class="stat">+3</span></div>
+          <div class="diff-meta">@@ 2023 – Present · Remote (US), via Kopius @@</div>
+          <div class="diff-line diff-add">Build Blazor WebAssembly micro-frontends for clinician workflows.</div>
+          <div class="diff-line diff-add">Integrate typed GraphQL services, ship feature-flagged rollouts via Azure DevOps CI/CD.</div>
+          <div class="diff-line diff-add">Work daily in English with a US-based team.</div>
+        </div>
+
+        <div class="diff-file">
+          <div class="diff-file-head"><span>experience/conekta.md</span><span class="stat">+1</span></div>
+          <div class="diff-meta">@@ 2022 – 2023 · Project Leader, Payments @@</div>
+          <div class="diff-line diff-add">Led a team of 6 developers on a payments product (Scrum/Jira).</div>
+        </div>
+
+        <div class="diff-file">
+          <div class="diff-file-head"><span>experience/prosegur.md</span><span class="stat">+3</span></div>
+          <div class="diff-meta">@@ 2015 – 2022 · IT Lead / Senior .NET Full-Stack Engineer @@</div>
+          <div class="diff-line diff-add">Led a distributed team of 8 across Argentina, Spain and Peru.</div>
+          <div class="diff-line diff-add">Built the core logistics platform for cash-in-transit ops + ATM key management for banks.</div>
+          <div class="diff-line diff-add">Stack: .NET 5, C#, Angular 8-10, SQL Server, Oracle, Docker, GCP, Azure DevOps.</div>
+        </div>
+
+        <div class="diff-file">
+          <div class="diff-file-head"><span>experience/2007-2015-earlier-roles.md</span><span class="stat">+1</span></div>
+          <div class="diff-meta">@@ Zoologic, New Digital Way, AXA Assistance, ATS, Grupo Abax @@</div>
+          <div class="diff-line diff-add">Full-stack .NET across e-commerce, insurance, IVR systems and QA automation.</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="side-col">
+      <div class="side-box">
+        <div class="side-label">Reviewers</div>
+        <div class="side-content">No reviewers assigned yet</div>
+      </div>
+      <div class="side-box">
+        <div class="side-label">Assignees</div>
+        <div class="side-person"><div class="avatar av-sm">MA</div> mauri0686</div>
+      </div>
+      <div class="side-box">
+        <div class="side-label">Labels</div>
+        <div class="side-content"><span class="lbl lbl-remote">remote-ok</span><span class="lbl lbl-senior">senior</span><span class="lbl lbl-contractor">contractor-or-fulltime</span></div>
+      </div>
+      <div class="side-box">
+        <div class="side-label">Projects</div>
+        <div class="side-content">None yet</div>
+      </div>
+      <div class="side-box">
+        <div class="side-label">Milestone</div>
+        <div class="side-content">August 2026</div>
+      </div>
+      <div class="side-box" style="border-bottom:none">
+        <div class="side-label">Contact</div>
+        <div class="side-content">
+          <a href="mailto:mauri0686@gmail.com">mauri0686@gmail.com</a><br>
+          <a href="https://www.linkedin.com/in/mauricio-acu%C3%B1a-171a9822" target="_blank" rel="noopener">LinkedIn</a><br>
+          <a href="https://github.com/mauri0686" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="below">
+    <a href="index.html">view as an interactive terminal</a> · <a href="amazon.html">view as a product page</a>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(function (tab) {
+  tab.addEventListener('click', function () {
+    document.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('active'); });
+    document.querySelectorAll('.tabpanel').forEach(function (p) { p.classList.remove('active'); });
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
