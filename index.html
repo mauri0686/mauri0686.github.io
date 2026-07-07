@@ -3,229 +3,298 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mauricio Acuña — Senior .NET Full-Stack Engineer</title>
-<meta name="description" content="Mauricio Acuña — Senior .NET Full-Stack Engineer, 13+ years. C#/.NET, Blazor, Angular, React, Azure. Applied AI: LLM apps & agents. Open to remote roles (LATAM/US).">
+<title>Mauricio Acuña · Senior .NET Full-Stack Engineer</title>
+<meta name="description" content="Senior .NET Full-Stack Engineer. 13+ years shipping C#/.NET, Blazor, Angular and React on Azure. Applied AI: LLM apps and agents. Open to remote roles.">
 <style>
   :root {
-    --navy: #16324F;
-    --navy-light: #1f4468;
-    --accent: #2e6da4;
-    --text: #26303a;
-    --muted: #5c6b7a;
-    --line: #e3e8ee;
-    --bg: #f5f7fa;
-    --card: #ffffff;
-    --chip: #eef3f8;
+    --bg: #0a1420;
+    --bg-2: #0f1e30;
+    --card: #12233a;
+    --card-2: #16294480;
+    --line: #1e3550;
+    --text: #e6edf5;
+    --muted: #93a7bd;
+    --dim: #6b829b;
+    --accent: #38bdf8;
+    --accent-2: #22d3ee;
+    --accent-soft: #38bdf81a;
   }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
   a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
 
-  /* ---------- header ---------- */
-  header { background: var(--navy); color: #fff; padding: 3rem 1.2rem 2.6rem; }
-  .hwrap { max-width: 880px; margin: 0 auto; display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap; }
-  .avatar { width: 92px; height: 92px; border-radius: 50%; background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; letter-spacing: .5px; flex-shrink: 0; }
-  .hname h1 { margin: 0 0 .25rem; font-size: 1.9rem; letter-spacing: .2px; }
-  .hname .role { font-size: 1.05rem; color: #d7e3f0; font-weight: 500; }
-  .hname .loc { font-size: .88rem; color: #a9bdd1; margin-top: .35rem; }
-  .hname .loc .dot { margin: 0 .45rem; opacity: .5; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.show { opacity: 1; transform: none; }
 
-  .cta-row { max-width: 880px; margin: 1.4rem auto 0; display: flex; gap: .6rem; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: .45rem; padding: .5rem 1rem; border-radius: 7px; font-size: .88rem; font-weight: 600; border: 1px solid transparent; }
-  .btn.primary { background: #fff; color: var(--navy); }
-  .btn.primary:hover { background: #eef3f8; text-decoration: none; }
-  .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); }
-  .btn.ghost:hover { background: rgba(255,255,255,.1); text-decoration: none; }
+  /* ---------- hero ---------- */
+  .hero { position: relative; overflow: hidden; padding: 5.5rem 1.4rem 3.5rem; text-align: center;
+    background:
+      radial-gradient(900px 380px at 50% -10%, #1c3a5e55, transparent 70%),
+      radial-gradient(700px 300px at 85% 20%, #22d3ee22, transparent 70%),
+      linear-gradient(180deg, var(--bg-2), var(--bg)); }
+  .hero .inner { max-width: 760px; margin: 0 auto; }
+  .avatar { width: 84px; height: 84px; margin: 0 auto 1.4rem; border-radius: 22px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.9rem; font-weight: 800; color: #06121f; letter-spacing: .5px;
+    box-shadow: 0 12px 40px -8px var(--accent); }
+  .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .hero h1 { font-size: clamp(2rem, 6vw, 3.1rem); line-height: 1.12; letter-spacing: -.5px; font-weight: 800; margin-bottom: 1.1rem; }
+  .hero h1 .grad { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .sub { font-size: 1.08rem; color: var(--muted); max-width: 600px; margin: 0 auto 2rem; }
+  .hero .sub b { color: var(--text); font-weight: 600; }
 
-  /* ---------- layout ---------- */
-  main { max-width: 880px; margin: -1.2rem auto 3rem; padding: 0 1.2rem; }
-  section.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1.5rem 1.7rem; margin-bottom: 1.1rem; box-shadow: 0 1px 3px rgba(22,50,79,.05); }
-  section.card h2 { margin: 0 0 1rem; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .8px; color: var(--navy); border-bottom: 2px solid var(--chip); padding-bottom: .55rem; }
+  .cta-row { display: flex; gap: .7rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .72rem 1.3rem; border-radius: 11px; font-size: .92rem; font-weight: 600; border: 1px solid transparent; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #06121f; box-shadow: 0 10px 30px -10px var(--accent); }
+  .btn.ghost { background: #ffffff08; color: var(--text); border-color: var(--line); }
+  .btn.ghost:hover { background: #ffffff12; border-color: var(--accent); }
 
-  /* ---------- summary ---------- */
-  .summary p { margin: 0; font-size: .97rem; }
+  /* ---------- stats ---------- */
+  .stats { max-width: 900px; margin: -1.4rem auto 0; padding: 0 1.4rem; position: relative; z-index: 2; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1.3rem 1rem; text-align: center; }
+  .stat .num { font-size: 2.1rem; font-weight: 800; line-height: 1; background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat .lbl { font-size: .78rem; color: var(--muted); margin-top: .5rem; letter-spacing: .3px; }
+  @media (max-width: 620px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 
-  /* ---------- experience ---------- */
-  .job { padding: 1rem 0; border-bottom: 1px solid var(--line); }
-  .job:first-of-type { padding-top: .2rem; }
-  .job:last-of-type { border-bottom: none; padding-bottom: .2rem; }
-  .job-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; }
-  .job-title { font-weight: 700; font-size: 1rem; color: var(--navy); }
-  .job-org { color: var(--muted); font-weight: 500; }
-  .job-dates { font-size: .82rem; color: var(--muted); white-space: nowrap; }
-  .job ul { margin: .5rem 0 0; padding-left: 1.15rem; font-size: .92rem; }
-  .job ul li { margin-bottom: .3rem; }
-  .job .stack { margin-top: .5rem; font-size: .8rem; color: var(--muted); }
-  .job .stack b { color: var(--text); font-weight: 600; }
+  /* ---------- generic section ---------- */
+  main { max-width: 900px; margin: 0 auto; padding: 0 1.4rem; }
+  .block { padding: 3.5rem 0 .5rem; }
+  .kicker { font-size: .76rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: .6rem; }
+  .block h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -.3px; margin-bottom: 1.6rem; }
+
+  /* ---------- value cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+  .vcard { background: linear-gradient(180deg, var(--card), var(--card-2)); border: 1px solid var(--line); border-radius: 16px; padding: 1.5rem; transition: transform .2s ease, border-color .2s ease; }
+  .vcard:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .vcard .ic { width: 42px; height: 42px; border-radius: 11px; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem; }
+  .vcard h3 { font-size: 1.05rem; margin-bottom: .5rem; }
+  .vcard p { font-size: .92rem; color: var(--muted); }
+
+  /* ---------- timeline ---------- */
+  .tl { position: relative; padding-left: 1.6rem; }
+  .tl::before { content: ""; position: absolute; left: 5px; top: .4rem; bottom: .4rem; width: 2px; background: linear-gradient(var(--accent), transparent); }
+  .tl-item { position: relative; padding: 0 0 1.8rem; }
+  .tl-item::before { content: ""; position: absolute; left: -1.6rem; top: .35rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-top { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; }
+  .tl-role { font-weight: 700; font-size: 1.04rem; }
+  .tl-org { color: var(--accent); font-weight: 600; }
+  .tl-date { font-size: .82rem; color: var(--dim); white-space: nowrap; }
+  .tl-item ul { margin: .5rem 0 0; padding-left: 1.1rem; }
+  .tl-item ul li { font-size: .93rem; color: var(--muted); margin-bottom: .3rem; }
+  .tl-stack { margin-top: .6rem; font-size: .8rem; color: var(--dim); }
+  .tl-stack b { color: var(--muted); font-weight: 600; }
 
   /* ---------- skills ---------- */
-  .skill-group { margin-bottom: .9rem; }
-  .skill-group:last-child { margin-bottom: 0; }
-  .skill-label { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); margin-bottom: .4rem; }
-  .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
-  .chip { background: var(--chip); color: var(--navy); font-size: .82rem; font-weight: 600; padding: .28rem .7rem; border-radius: 999px; }
+  .skgroup { margin-bottom: 1.1rem; }
+  .skgroup:last-child { margin-bottom: 0; }
+  .skgroup .lbl { font-size: .76rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--dim); margin-bottom: .55rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .chip { background: #ffffff08; border: 1px solid var(--line); color: var(--text); font-size: .84rem; font-weight: 500; padding: .32rem .8rem; border-radius: 999px; transition: border-color .15s ease, color .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* ---------- two-col small sections ---------- */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
-  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
-  .kv { font-size: .92rem; margin: 0; }
-  .kv li { list-style: none; margin-bottom: .45rem; }
-  .kv b { color: var(--navy); }
-  ul.kv { padding-left: 0; }
+  /* ---------- contact ---------- */
+  .contact { margin: 4rem 0 0; padding: 3rem 1.4rem; border-radius: 22px; text-align: center;
+    background: radial-gradient(600px 260px at 50% 0%, #22d3ee22, transparent 70%), linear-gradient(160deg, var(--card), var(--bg-2));
+    border: 1px solid var(--line); }
+  .contact h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: .6rem; }
+  .contact p { color: var(--muted); margin-bottom: 1.6rem; max-width: 460px; margin-left: auto; margin-right: auto; }
 
-  /* ---------- footer ---------- */
-  footer { text-align: center; font-size: .78rem; color: var(--muted); padding: 0 1.2rem 2.5rem; }
-  footer a { color: var(--muted); text-decoration: underline; }
+  footer { text-align: center; font-size: .8rem; color: var(--dim); padding: 2.5rem 1.4rem 3rem; }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--accent); }
 
   @media print {
-    header { padding: 1.2rem; }
-    .cta-row, footer { display: none; }
-    body { background: #fff; }
-    section.card { border: none; box-shadow: none; padding: .8rem 0; }
+    body { background: #fff; color: #111; }
+    .hero { background: #fff; padding: 1.5rem; }
+    .avatar { box-shadow: none; }
+    .hero h1 .grad, .stat .num { color: #0a1420; -webkit-text-fill-color: #0a1420; }
+    .cta-row, .contact, footer { display: none; }
+    .vcard, .stat, .chip { border-color: #ccc; background: #fff; }
+    .muted, .tl-item ul li { color: #333; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="hwrap">
+<!-- HERO -->
+<section class="hero">
+  <div class="inner reveal">
     <div class="avatar">MA</div>
-    <div class="hname">
-      <h1>Mauricio Acuña</h1>
-      <div class="role">Senior .NET Full-Stack Engineer &nbsp;·&nbsp; Applied AI (LLM apps &amp; agents)</div>
-      <div class="loc">Buenos Aires, Argentina <span class="dot">•</span> Remote (GMT-3) <span class="dot">•</span> Open to contractor (USD) or full-time</div>
+    <div class="eyebrow">Senior .NET Full-Stack Engineer</div>
+    <h1>I build <span class="grad">.NET products</span> end to end and ship them to production.</h1>
+    <p class="sub">13+ years across backend, frontend and cloud. <b>3 years fully remote</b> with US teams, working every day in English. Open to remote roles, contractor (USD) or full-time.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="MauricioAcunaCV_EN.pdf" target="_blank" rel="noopener">Download CV (EN)</a>
+      <a class="btn ghost" href="MauricioAcunaCV_ES.pdf" target="_blank" rel="noopener">Descargar CV (ES)</a>
+      <a class="btn ghost" href="mailto:mauri0686@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/mauri0686" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
-  <div class="cta-row">
-    <a class="btn primary" href="MauricioAcunaCV_EN.pdf" target="_blank" rel="noopener">Download CV (English)</a>
-    <a class="btn primary" href="MauricioAcunaCV_ES.pdf" target="_blank" rel="noopener">Descargar CV (Español)</a>
-    <a class="btn ghost" href="mailto:mauri0686@gmail.com">mauri0686@gmail.com</a>
-    <a class="btn ghost" href="https://www.linkedin.com/in/mauri0686" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn ghost" href="https://github.com/mauri0686" target="_blank" rel="noopener">GitHub</a>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid reveal">
+    <div class="stat"><div class="num" data-count="13" data-suffix="+">0</div><div class="lbl">Years shipping .NET</div></div>
+    <div class="stat"><div class="num" data-count="8">0</div><div class="lbl">Engineers led</div></div>
+    <div class="stat"><div class="num" data-count="3">0</div><div class="lbl">Countries, one team</div></div>
+    <div class="stat"><div class="num" data-count="3">0</div><div class="lbl">Years remote, US teams</div></div>
   </div>
-</header>
+</div>
 
 <main>
 
-  <section class="card summary">
-    <h2>Professional Summary</h2>
-    <p>Senior full-stack engineer with 13+ years building .NET applications end to end — from .NET Framework through .NET 9, with C#, Blazor, Angular and React on SQL Server and Azure. For the past three years I have worked fully remote for a US healthcare company, collaborating daily in English. Earlier I led teams of 6 to 8 engineers across Argentina, Spain and Peru. More recently I have been building AI features as well: LLM apps with OpenAI and LangChain, retrieval-augmented generation over vector databases, and small autonomous agents. I like owning features from idea to production.</p>
-  </section>
-
-  <section class="card">
-    <h2>Experience</h2>
-
-    <div class="job">
-      <div class="job-head">
-        <div><span class="job-title">Senior Software Engineer</span> <span class="job-org">· Kopius (Homecare Homebase, US healthcare)</span></div>
-        <div class="job-dates">2023 – Present · Remote (US)</div>
+  <!-- VALUE -->
+  <section class="block reveal">
+    <div class="kicker">What I bring</div>
+    <h2>Senior engineering that reaches production.</h2>
+    <div class="cards">
+      <div class="vcard">
+        <div class="ic">&#9673;</div>
+        <h3>Ship end to end</h3>
+        <p>Backend, frontend, database and cloud. From .NET Framework through .NET 9, with Blazor, Angular and React on Azure and SQL Server.</p>
       </div>
-      <ul>
-        <li>Build Blazor WebAssembly micro-frontends (Piral pilets) in HCHB's Care+ / Patient Center for clinician workflows: vitals, demographics, visit review, physical assessment and clinical documentation.</li>
-        <li>Integrate typed GraphQL data services (HotChocolate, StrawberryShake) and ship feature-flagged rollouts with LaunchDarkly.</li>
-        <li>Test components and services with xUnit, bUnit, Moq and FluentAssertions in an Azure DevOps CI/CD pipeline, working in English with a US-based team.</li>
-      </ul>
-      <div class="stack"><b>Stack:</b> C#, .NET 8/9, Blazor WebAssembly, GraphQL, Telerik UI, SQL Server, Dapper, Azure DevOps</div>
-    </div>
-
-    <div class="job">
-      <div class="job-head">
-        <div><span class="job-title">Project Leader, Payments</span> <span class="job-org">· Conekta</span></div>
-        <div class="job-dates">2022 – 2023</div>
+      <div class="vcard">
+        <div class="ic">&#9650;</div>
+        <h3>Lead delivery</h3>
+        <p>Ran distributed teams of up to 8 engineers across three countries. Scrum, code review, and ownership from idea to production.</p>
       </div>
-      <ul>
-        <li>Led a team of 6 developers on a payments product, running the team with Scrum and Jira.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="job-head">
-        <div><span class="job-title">IT Lead / Senior .NET Full-Stack Engineer</span> <span class="job-org">· Prosegur</span></div>
-        <div class="job-dates">2015 – 2022</div>
+      <div class="vcard">
+        <div class="ic">&#10022;</div>
+        <h3>Applied AI</h3>
+        <p>Build LLM apps and agents, retrieval-augmented generation over vector databases, and automation that turns models into reliable features.</p>
       </div>
-      <ul>
-        <li>Led a distributed team of 8 developers across Argentina, Spain and Peru.</li>
-        <li>Built the core logistics platform for cash-in-transit operations, plus an ATM key management system for banks and armored trucks.</li>
-      </ul>
-      <div class="stack"><b>Stack:</b> .NET 5, C#, Angular 8 to 10, SQL Server, Oracle, Docker, Google Cloud, Azure DevOps</div>
-    </div>
-
-    <div class="job">
-      <div class="job-head">
-        <div><span class="job-title">Earlier .NET roles</span> <span class="job-org">· Zoologic, New Digital Way, AXA Assistance, ATS, Grupo Abax</span></div>
-        <div class="job-dates">2007 – 2015</div>
-      </div>
-      <ul>
-        <li>Full-stack .NET work across e-commerce (musimundo.com), insurance, IVR systems and QA automation, on .NET Framework MVC and SQL Server.</li>
-      </ul>
     </div>
   </section>
 
-  <section class="card">
-    <h2>Technical Skills</h2>
-    <div class="skill-group">
-      <div class="skill-label">Languages &amp; Frameworks</div>
+  <!-- EXPERIENCE -->
+  <section class="block reveal">
+    <div class="kicker">Experience</div>
+    <h2>Where I have shipped.</h2>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-top">
+          <div><span class="tl-role">Senior Software Engineer</span> <span class="tl-org">· Homecare Homebase (US healthcare)</span></div>
+          <div class="tl-date">2023 &ndash; Now</div>
+        </div>
+        <ul>
+          <li>Build Blazor WebAssembly micro-frontends for clinician workflows: vitals, demographics, visit review and clinical documentation.</li>
+          <li>Integrate typed GraphQL data services and ship feature-flagged rollouts with LaunchDarkly.</li>
+          <li>Test components and services with xUnit and bUnit inside an Azure DevOps CI/CD pipeline, working in English with a US-based team.</li>
+        </ul>
+        <div class="tl-stack"><b>Stack:</b> C#, .NET 8/9, Blazor WebAssembly, GraphQL, Telerik UI, SQL Server, Dapper, Azure DevOps</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-top">
+          <div><span class="tl-role">Project Leader, Payments</span> <span class="tl-org">· Conekta</span></div>
+          <div class="tl-date">2022 &ndash; 2023</div>
+        </div>
+        <ul>
+          <li>Led a team of 6 developers on a payments product, running delivery with Scrum and Jira.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-top">
+          <div><span class="tl-role">IT Lead / Senior .NET Full-Stack Engineer</span> <span class="tl-org">· Prosegur</span></div>
+          <div class="tl-date">2015 &ndash; 2022</div>
+        </div>
+        <ul>
+          <li>Led a distributed team of 8 developers across Argentina, Spain and Peru.</li>
+          <li>Built the core logistics platform for cash-in-transit operations, plus an ATM key management system for banks and armored trucks.</li>
+        </ul>
+        <div class="tl-stack"><b>Stack:</b> .NET 5, C#, Angular 8&ndash;10, SQL Server, Oracle, Docker, Google Cloud, Azure DevOps</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-top">
+          <div><span class="tl-role">Earlier .NET roles</span> <span class="tl-org">· Zoologic, New Digital Way, AXA Assistance, ATS</span></div>
+          <div class="tl-date">2007 &ndash; 2015</div>
+        </div>
+        <ul>
+          <li>Full-stack .NET across e-commerce, insurance, IVR systems and QA automation, on .NET Framework MVC and SQL Server.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="block reveal">
+    <div class="kicker">Toolbox</div>
+    <h2>Technical skills.</h2>
+    <div class="skgroup">
+      <div class="lbl">Languages &amp; Frameworks</div>
       <div class="chips"><span class="chip">C#</span><span class="chip">.NET 9 / .NET Core</span><span class="chip">ASP.NET Core</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Python</span></div>
     </div>
-    <div class="skill-group">
-      <div class="skill-label">Frontend</div>
-      <div class="chips"><span class="chip">Blazor WebAssembly</span><span class="chip">Angular</span><span class="chip">React</span><span class="chip">Telerik UI</span><span class="chip">Micro-frontends (Piral)</span><span class="chip">SignalR</span></div>
+    <div class="skgroup">
+      <div class="lbl">Frontend</div>
+      <div class="chips"><span class="chip">Blazor WebAssembly</span><span class="chip">Angular</span><span class="chip">React</span><span class="chip">Telerik UI</span><span class="chip">Micro-frontends</span><span class="chip">SignalR</span></div>
     </div>
-    <div class="skill-group">
-      <div class="skill-label">Cloud &amp; DevOps</div>
+    <div class="skgroup">
+      <div class="lbl">Cloud &amp; DevOps</div>
       <div class="chips"><span class="chip">Azure</span><span class="chip">Azure DevOps</span><span class="chip">CI/CD</span><span class="chip">LaunchDarkly</span><span class="chip">Google Cloud</span><span class="chip">Docker</span></div>
     </div>
-    <div class="skill-group">
-      <div class="skill-label">Data</div>
-      <div class="chips"><span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">EF Core</span><span class="chip">Dapper</span></div>
+    <div class="skgroup">
+      <div class="lbl">Data &amp; APIs</div>
+      <div class="chips"><span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">EF Core</span><span class="chip">Dapper</span><span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">Microservices</span></div>
     </div>
-    <div class="skill-group">
-      <div class="skill-label">APIs &amp; Architecture</div>
-      <div class="chips"><span class="chip">REST</span><span class="chip">GraphQL (HotChocolate, StrawberryShake)</span><span class="chip">Microservices</span><span class="chip">DDD</span></div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-label">Testing</div>
-      <div class="chips"><span class="chip">xUnit</span><span class="chip">bUnit</span><span class="chip">Moq</span><span class="chip">FluentAssertions</span><span class="chip">SonarQube</span></div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-label">AI</div>
-      <div class="chips"><span class="chip">LLM apps (OpenAI, LangChain)</span><span class="chip">RAG &amp; embeddings</span><span class="chip">AI agents</span><span class="chip">Prompt engineering</span><span class="chip">OpenAI Vision</span></div>
+    <div class="skgroup">
+      <div class="lbl">Applied AI</div>
+      <div class="chips"><span class="chip">LLM apps</span><span class="chip">AI agents</span><span class="chip">RAG &amp; embeddings</span><span class="chip">Prompt engineering</span></div>
     </div>
   </section>
 
-  <div class="grid-2">
-    <section class="card">
-      <h2>Languages</h2>
-      <ul class="kv">
-        <li><b>Spanish:</b> native</li>
-        <li><b>English:</b> upper-intermediate (B2) — 3 years working daily in English with US teams</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Education &amp; Training</h2>
-      <ul class="kv">
-        <li><b>Universidad Abierta Interamericana</b></li>
-        <li>Educación IT: SQL Server, Oracle, .NET Design Patterns, Kanban</li>
-        <li>PluralSight: Angular, Domain-Driven Design · PM Value: Project Administration</li>
-      </ul>
-    </section>
-  </div>
-
-  <section class="card">
-    <h2>Projects</h2>
-    <ul class="kv">
-      <li><b><a href="https://mauri0686.github.io/NetflixFront" target="_blank" rel="noopener">NetflixFront</a></b> — Netflix-style UI built with React.</li>
-    </ul>
+  <!-- CONTACT -->
+  <section class="contact reveal">
+    <h2>Let&rsquo;s build something.</h2>
+    <p>Available for remote roles across LATAM and the US, contractor (USD) or full-time. I usually reply the same day.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="mailto:mauri0686@gmail.com">mauri0686@gmail.com</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/mauri0686" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
   </section>
 
 </main>
 
 <footer>
-  Prefer a geekier read? Try the <a href="terminal.html">terminal version</a>, the <a href="pr.html">GitHub PR version</a> or the <a href="amazon.html">product-page version</a>.
+  Prefer a geekier read? See the <a href="terminal.html">terminal version</a>, the <a href="pr.html">GitHub PR version</a> or the <a href="amazon.html">product-page version</a>.
 </footer>
+
+<script>
+  // reveal on scroll
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+  // count-up on stats
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var dur = 1100, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var statsIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.querySelectorAll('[data-count]').forEach(animateCount); statsIO.unobserve(e.target); }
+    });
+  }, { threshold: .4 });
+  document.querySelectorAll('.stats-grid').forEach(function (el) { statsIO.observe(el); });
+</script>
 
 </body>
 </html>
