@@ -88,7 +88,8 @@
   @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
   .vcard { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 1.5rem; backdrop-filter: blur(12px); transition: transform .2s ease, border-color .2s ease; }
   .vcard:hover { transform: translateY(-5px); border-color: var(--accent); }
-  .vcard .ic { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #38bdf826, #818cf826); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 1rem; }
+  .vcard .ic { width: 46px; height: 46px; border-radius: 13px; background: linear-gradient(135deg, #38bdf82e, #818cf82e); color: var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border: 1px solid #38bdf826; }
+  .vcard .ic svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .vcard h3 { font-size: 1.06rem; margin-bottom: .5rem; }
   .vcard p { font-size: .92rem; color: var(--muted); }
 
@@ -191,17 +192,17 @@
     <h2>Senior engineering that reaches production.</h2>
     <div class="cards">
       <div class="vcard">
-        <div class="ic">&#9673;</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
         <h3>Ship end to end</h3>
         <p>Backend, frontend, database and cloud. From .NET Framework through .NET 9, with Blazor, Angular and React on Azure and SQL Server.</p>
       </div>
       <div class="vcard">
-        <div class="ic">&#9650;</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Lead delivery</h3>
         <p>Ran distributed teams of up to 8 engineers across three countries. Scrum, code review, and ownership from idea to production.</p>
       </div>
       <div class="vcard">
-        <div class="ic">&#10022;</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3Z"/><path d="M19 4v3"/><path d="M20.5 5.5h-3"/></svg></div>
         <h3>Applied AI</h3>
         <p>Build LLM apps and agents, retrieval-augmented generation over vector databases, and automation that turns models into reliable features.</p>
       </div>
