@@ -4,131 +4,228 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mauricio Acuña — Senior .NET Full-Stack Engineer</title>
-<meta name="description" content="Mauricio Acuña — Senior .NET Full-Stack Engineer, 13+ years, C#/.NET, Angular/React, Azure. Applied AI: LLM agents & automation. Open to remote roles.">
+<meta name="description" content="Mauricio Acuña — Senior .NET Full-Stack Engineer, 13+ years. C#/.NET, Blazor, Angular, React, Azure. Applied AI: LLM apps & agents. Open to remote roles (LATAM/US).">
 <style>
+  :root {
+    --navy: #16324F;
+    --navy-light: #1f4468;
+    --accent: #2e6da4;
+    --text: #26303a;
+    --muted: #5c6b7a;
+    --line: #e3e8ee;
+    --bg: #f5f7fa;
+    --card: #ffffff;
+    --chip: #eef3f8;
+  }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-  #view-terminal {
-    background: #0a0e14; color: #c9d1d9; min-height: 100vh;
-    padding: 3rem 1rem 2rem;
-  }
-  .term-window {
-    max-width: 760px; margin: 0 auto; background: #0d1117;
-    border: 1px solid #30363d; border-radius: 8px; overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,.5);
-  }
-  .term-bar { background: #161b22; padding: .6rem .9rem; display: flex; align-items: center; gap: .4rem; }
-  .term-dot { width: 11px; height: 11px; border-radius: 50%; }
-  .term-dot.r { background: #ff5f56; } .term-dot.y { background: #ffbd2e; } .term-dot.g { background: #27c93f; }
-  .term-title { margin: 0 auto; color: #8b949e; font-size: .78rem; font-family: monospace; transform: translateX(-16px); }
-  #term-body {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: .92rem; padding: 1.2rem 1.4rem; min-height: 420px; white-space: pre-wrap; word-break: break-word;
-  }
-  .prompt { color: #7ee787; }
-  .out { color: #c9d1d9; }
-  .dim { color: #6e7681; }
-  .cursor { display: inline-block; width: 8px; height: 1.05em; background: #c9d1d9; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
+  /* ---------- header ---------- */
+  header { background: var(--navy); color: #fff; padding: 3rem 1.2rem 2.6rem; }
+  .hwrap { max-width: 880px; margin: 0 auto; display: flex; gap: 1.6rem; align-items: center; flex-wrap: wrap; }
+  .avatar { width: 92px; height: 92px; border-radius: 50%; background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; letter-spacing: .5px; flex-shrink: 0; }
+  .hname h1 { margin: 0 0 .25rem; font-size: 1.9rem; letter-spacing: .2px; }
+  .hname .role { font-size: 1.05rem; color: #d7e3f0; font-weight: 500; }
+  .hname .loc { font-size: .88rem; color: #a9bdd1; margin-top: .35rem; }
+  .hname .loc .dot { margin: 0 .45rem; opacity: .5; }
 
-  .below { max-width: 760px; margin: 1rem auto 0; text-align: center; font-family: monospace; font-size: .82rem; color: #6e7681; }
-  .below a { color: #7ee787; text-decoration: none; }
-  .below a:hover { text-decoration: underline; }
-  .below .sep { margin: 0 .5rem; opacity: .5; }
+  .cta-row { max-width: 880px; margin: 1.4rem auto 0; display: flex; gap: .6rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: .45rem; padding: .5rem 1rem; border-radius: 7px; font-size: .88rem; font-weight: 600; border: 1px solid transparent; }
+  .btn.primary { background: #fff; color: var(--navy); }
+  .btn.primary:hover { background: #eef3f8; text-decoration: none; }
+  .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); }
+  .btn.ghost:hover { background: rgba(255,255,255,.1); text-decoration: none; }
 
-  @media (max-width: 560px) { #term-body { font-size: .82rem; } }
+  /* ---------- layout ---------- */
+  main { max-width: 880px; margin: -1.2rem auto 3rem; padding: 0 1.2rem; }
+  section.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1.5rem 1.7rem; margin-bottom: 1.1rem; box-shadow: 0 1px 3px rgba(22,50,79,.05); }
+  section.card h2 { margin: 0 0 1rem; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .8px; color: var(--navy); border-bottom: 2px solid var(--chip); padding-bottom: .55rem; }
+
+  /* ---------- summary ---------- */
+  .summary p { margin: 0; font-size: .97rem; }
+
+  /* ---------- experience ---------- */
+  .job { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .job:first-of-type { padding-top: .2rem; }
+  .job:last-of-type { border-bottom: none; padding-bottom: .2rem; }
+  .job-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: baseline; }
+  .job-title { font-weight: 700; font-size: 1rem; color: var(--navy); }
+  .job-org { color: var(--muted); font-weight: 500; }
+  .job-dates { font-size: .82rem; color: var(--muted); white-space: nowrap; }
+  .job ul { margin: .5rem 0 0; padding-left: 1.15rem; font-size: .92rem; }
+  .job ul li { margin-bottom: .3rem; }
+  .job .stack { margin-top: .5rem; font-size: .8rem; color: var(--muted); }
+  .job .stack b { color: var(--text); font-weight: 600; }
+
+  /* ---------- skills ---------- */
+  .skill-group { margin-bottom: .9rem; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-label { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); margin-bottom: .4rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .chip { background: var(--chip); color: var(--navy); font-size: .82rem; font-weight: 600; padding: .28rem .7rem; border-radius: 999px; }
+
+  /* ---------- two-col small sections ---------- */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+  .kv { font-size: .92rem; margin: 0; }
+  .kv li { list-style: none; margin-bottom: .45rem; }
+  .kv b { color: var(--navy); }
+  ul.kv { padding-left: 0; }
+
+  /* ---------- footer ---------- */
+  footer { text-align: center; font-size: .78rem; color: var(--muted); padding: 0 1.2rem 2.5rem; }
+  footer a { color: var(--muted); text-decoration: underline; }
+
+  @media print {
+    header { padding: 1.2rem; }
+    .cta-row, footer { display: none; }
+    body { background: #fff; }
+    section.card { border: none; box-shadow: none; padding: .8rem 0; }
+  }
 </style>
 </head>
 <body>
 
-<div id="view-terminal">
-  <div class="term-window">
-    <div class="term-bar">
-      <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-      <span class="term-title">mauricio@career: ~</span>
+<header>
+  <div class="hwrap">
+    <div class="avatar">MA</div>
+    <div class="hname">
+      <h1>Mauricio Acuña</h1>
+      <div class="role">Senior .NET Full-Stack Engineer &nbsp;·&nbsp; Applied AI (LLM apps &amp; agents)</div>
+      <div class="loc">Buenos Aires, Argentina <span class="dot">•</span> Remote (GMT-3) <span class="dot">•</span> Open to contractor (USD) or full-time</div>
     </div>
-    <div id="term-body"></div>
   </div>
-  <div class="below">
-    <a href="MauricioAcuna-CV-Terminal.pdf" target="_blank" rel="noopener">↓ download as PDF</a>
-    <span class="sep">·</span>
-    <a href="pr.html">view as a GitHub PR</a>
-    <span class="sep">·</span>
-    <a href="amazon.html">view as a product page</a>
+  <div class="cta-row">
+    <a class="btn primary" href="MauricioAcunaCV_EN.pdf" target="_blank" rel="noopener">Download CV (English)</a>
+    <a class="btn primary" href="MauricioAcunaCV_ES.pdf" target="_blank" rel="noopener">Descargar CV (Español)</a>
+    <a class="btn ghost" href="mailto:mauri0686@gmail.com">mauri0686@gmail.com</a>
+    <a class="btn ghost" href="https://www.linkedin.com/in/mauri0686" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="https://github.com/mauri0686" target="_blank" rel="noopener">GitHub</a>
   </div>
-</div>
+</header>
 
-<script>
-var termBody = document.getElementById('term-body');
+<main>
 
-var sequence = [
-  { cmd: 'whoami', out: 'Mauricio Acuña — Senior .NET Full-Stack Engineer\nBuenos Aires, Argentina · Remote (GMT-3)' },
-  { cmd: 'cat summary.txt', out: 'Senior full-stack engineer, 13+ years shipping .NET applications end to end\n(.NET Framework -> .NET 9), with C#, Blazor, Angular and React on SQL Server\nand Azure. 3 years fully remote for a US healthcare company, working daily\nin English. Earlier led distributed teams of 6-8 engineers across AR/ES/PE.\nShipping applied-AI features too: LLM apps & agents, RAG, automation.' },
-  { cmd: 'git log --oneline --reverse experience/', out: '2007-2015  feat: full-stack .NET across e-commerce, insurance, IVR, QA\n2015-2022  feat: lead 8-eng team @ Prosegur, cash-logistics + ATM key mgmt\n2022-2023  feat: lead 6-eng team @ Conekta, payments product\n2023-now   feat: Blazor micro-frontends @ Homecare Homebase (via Kopius)' },
-  { cmd: 'ls skills/', out: 'languages-frameworks/   frontend/   cloud-devops/   data/   ai/\n\nC#  .NET9  .NETCore  .NETFramework  TS  JS  Python\nBlazor  Angular  React  SignalR\nAzure  AzureDevOps  Docker  GCP\nSQLServer  Oracle  MySQL  EFCore\nLLM-agents  RAG  prompt-engineering' },
-  { cmd: 'cat availability.txt', out: 'status: open to remote roles (contractor USD or full-time)\nnotice: immediate\nenglish: upper-intermediate (B2)' },
-  { cmd: 'sudo ./hire-me.sh', out: '[sudo] password for recruiter: ********\nPermission granted.\n-> mailing mauri0686@gmail.com ... done\n-> opening linkedin.com/in/mauricio-acuña ... done\nRun complete. Let\'s talk!' }
-];
+  <section class="card summary">
+    <h2>Professional Summary</h2>
+    <p>Senior full-stack engineer with 13+ years building .NET applications end to end — from .NET Framework through .NET 9, with C#, Blazor, Angular and React on SQL Server and Azure. For the past three years I have worked fully remote for a US healthcare company, collaborating daily in English. Earlier I led teams of 6 to 8 engineers across Argentina, Spain and Peru. More recently I have been building AI features as well: LLM apps with OpenAI and LangChain, retrieval-augmented generation over vector databases, and small autonomous agents. I like owning features from idea to production.</p>
+  </section>
 
-function runTerminal() {
-  var i = 0;
-  termBody.innerHTML = '';
-  function nextCmd() {
-    if (i >= sequence.length) { appendPromptLine(); return; }
-    typeCmd(sequence[i], function () { i++; setTimeout(nextCmd, 350); });
-  }
-  nextCmd();
-}
+  <section class="card">
+    <h2>Experience</h2>
 
-function typeCmd(step, done) {
-  var line = document.createElement('div');
-  var promptSpan = document.createElement('span');
-  promptSpan.className = 'prompt';
-  promptSpan.textContent = 'mauricio@career:~$ ';
-  var cmdSpan = document.createElement('span');
-  cmdSpan.className = 'out';
-  line.appendChild(promptSpan);
-  line.appendChild(cmdSpan);
-  termBody.appendChild(line);
+    <div class="job">
+      <div class="job-head">
+        <div><span class="job-title">Senior Software Engineer</span> <span class="job-org">· Kopius (Homecare Homebase, US healthcare)</span></div>
+        <div class="job-dates">2023 – Present · Remote (US)</div>
+      </div>
+      <ul>
+        <li>Build Blazor WebAssembly micro-frontends (Piral pilets) in HCHB's Care+ / Patient Center for clinician workflows: vitals, demographics, visit review, physical assessment and clinical documentation.</li>
+        <li>Integrate typed GraphQL data services (HotChocolate, StrawberryShake) and ship feature-flagged rollouts with LaunchDarkly.</li>
+        <li>Test components and services with xUnit, bUnit, Moq and FluentAssertions in an Azure DevOps CI/CD pipeline, working in English with a US-based team.</li>
+      </ul>
+      <div class="stack"><b>Stack:</b> C#, .NET 8/9, Blazor WebAssembly, GraphQL, Telerik UI, SQL Server, Dapper, Azure DevOps</div>
+    </div>
 
-  var chars = step.cmd.split('');
-  var idx = 0;
-  var typer = setInterval(function () {
-    cmdSpan.textContent += chars[idx];
-    idx++;
-    termBody.scrollTop = termBody.scrollHeight;
-    if (idx >= chars.length) {
-      clearInterval(typer);
-      setTimeout(function () {
-        var out = document.createElement('div');
-        out.className = 'out dim';
-        out.style.margin = '.25rem 0 .9rem';
-        out.textContent = step.out;
-        termBody.appendChild(out);
-        termBody.scrollTop = termBody.scrollHeight;
-        done();
-      }, 250);
-    }
-  }, 22);
-}
+    <div class="job">
+      <div class="job-head">
+        <div><span class="job-title">Project Leader, Payments</span> <span class="job-org">· Conekta</span></div>
+        <div class="job-dates">2022 – 2023</div>
+      </div>
+      <ul>
+        <li>Led a team of 6 developers on a payments product, running the team with Scrum and Jira.</li>
+      </ul>
+    </div>
 
-function appendPromptLine() {
-  var line = document.createElement('div');
-  var promptSpan = document.createElement('span');
-  promptSpan.className = 'prompt';
-  promptSpan.textContent = 'mauricio@career:~$ ';
-  var cursor = document.createElement('span');
-  cursor.className = 'cursor';
-  line.appendChild(promptSpan);
-  line.appendChild(cursor);
-  termBody.appendChild(line);
-}
+    <div class="job">
+      <div class="job-head">
+        <div><span class="job-title">IT Lead / Senior .NET Full-Stack Engineer</span> <span class="job-org">· Prosegur</span></div>
+        <div class="job-dates">2015 – 2022</div>
+      </div>
+      <ul>
+        <li>Led a distributed team of 8 developers across Argentina, Spain and Peru.</li>
+        <li>Built the core logistics platform for cash-in-transit operations, plus an ATM key management system for banks and armored trucks.</li>
+      </ul>
+      <div class="stack"><b>Stack:</b> .NET 5, C#, Angular 8 to 10, SQL Server, Oracle, Docker, Google Cloud, Azure DevOps</div>
+    </div>
 
-runTerminal();
-</script>
+    <div class="job">
+      <div class="job-head">
+        <div><span class="job-title">Earlier .NET roles</span> <span class="job-org">· Zoologic, New Digital Way, AXA Assistance, ATS, Grupo Abax</span></div>
+        <div class="job-dates">2007 – 2015</div>
+      </div>
+      <ul>
+        <li>Full-stack .NET work across e-commerce (musimundo.com), insurance, IVR systems and QA automation, on .NET Framework MVC and SQL Server.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Technical Skills</h2>
+    <div class="skill-group">
+      <div class="skill-label">Languages &amp; Frameworks</div>
+      <div class="chips"><span class="chip">C#</span><span class="chip">.NET 9 / .NET Core</span><span class="chip">ASP.NET Core</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Python</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Frontend</div>
+      <div class="chips"><span class="chip">Blazor WebAssembly</span><span class="chip">Angular</span><span class="chip">React</span><span class="chip">Telerik UI</span><span class="chip">Micro-frontends (Piral)</span><span class="chip">SignalR</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Cloud &amp; DevOps</div>
+      <div class="chips"><span class="chip">Azure</span><span class="chip">Azure DevOps</span><span class="chip">CI/CD</span><span class="chip">LaunchDarkly</span><span class="chip">Google Cloud</span><span class="chip">Docker</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Data</div>
+      <div class="chips"><span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">EF Core</span><span class="chip">Dapper</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">APIs &amp; Architecture</div>
+      <div class="chips"><span class="chip">REST</span><span class="chip">GraphQL (HotChocolate, StrawberryShake)</span><span class="chip">Microservices</span><span class="chip">DDD</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Testing</div>
+      <div class="chips"><span class="chip">xUnit</span><span class="chip">bUnit</span><span class="chip">Moq</span><span class="chip">FluentAssertions</span><span class="chip">SonarQube</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">AI</div>
+      <div class="chips"><span class="chip">LLM apps (OpenAI, LangChain)</span><span class="chip">RAG &amp; embeddings</span><span class="chip">AI agents</span><span class="chip">Prompt engineering</span><span class="chip">OpenAI Vision</span></div>
+    </div>
+  </section>
+
+  <div class="grid-2">
+    <section class="card">
+      <h2>Languages</h2>
+      <ul class="kv">
+        <li><b>Spanish:</b> native</li>
+        <li><b>English:</b> upper-intermediate (B2) — 3 years working daily in English with US teams</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Education &amp; Training</h2>
+      <ul class="kv">
+        <li><b>Universidad Abierta Interamericana</b></li>
+        <li>Educación IT: SQL Server, Oracle, .NET Design Patterns, Kanban</li>
+        <li>PluralSight: Angular, Domain-Driven Design · PM Value: Project Administration</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>Projects</h2>
+    <ul class="kv">
+      <li><b><a href="https://mauri0686.github.io/NetflixFront" target="_blank" rel="noopener">NetflixFront</a></b> — Netflix-style UI built with React.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Prefer a geekier read? Try the <a href="terminal.html">terminal version</a>, the <a href="pr.html">GitHub PR version</a> or the <a href="amazon.html">product-page version</a>.
+</footer>
 
 </body>
 </html>
-

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mauricio Acuña — Senior .NET Full-Stack Engineer</title>
+<meta name="description" content="Mauricio Acuña — Senior .NET Full-Stack Engineer, 13+ years, C#/.NET, Angular/React, Azure. Applied AI: LLM agents & automation. Open to remote roles.">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+  #view-terminal {
+    background: #0a0e14; color: #c9d1d9; min-height: 100vh;
+    padding: 3rem 1rem 2rem;
+  }
+  .term-window {
+    max-width: 760px; margin: 0 auto; background: #0d1117;
+    border: 1px solid #30363d; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,.5);
+  }
+  .term-bar { background: #161b22; padding: .6rem .9rem; display: flex; align-items: center; gap: .4rem; }
+  .term-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .term-dot.r { background: #ff5f56; } .term-dot.y { background: #ffbd2e; } .term-dot.g { background: #27c93f; }
+  .term-title { margin: 0 auto; color: #8b949e; font-size: .78rem; font-family: monospace; transform: translateX(-16px); }
+  #term-body {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: .92rem; padding: 1.2rem 1.4rem; min-height: 420px; white-space: pre-wrap; word-break: break-word;
+  }
+  .prompt { color: #7ee787; }
+  .out { color: #c9d1d9; }
+  .dim { color: #6e7681; }
+  .cursor { display: inline-block; width: 8px; height: 1.05em; background: #c9d1d9; vertical-align: text-bottom; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .below { max-width: 760px; margin: 1rem auto 0; text-align: center; font-family: monospace; font-size: .82rem; color: #6e7681; }
+  .below a { color: #7ee787; text-decoration: none; }
+  .below a:hover { text-decoration: underline; }
+  .below .sep { margin: 0 .5rem; opacity: .5; }
+
+  @media (max-width: 560px) { #term-body { font-size: .82rem; } }
+</style>
+</head>
+<body>
+
+<div id="view-terminal">
+  <div class="term-window">
+    <div class="term-bar">
+      <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+      <span class="term-title">mauricio@career: ~</span>
+    </div>
+    <div id="term-body"></div>
+  </div>
+  <div class="below">
+    <a href="MauricioAcuna-CV-Terminal.pdf" target="_blank" rel="noopener">↓ download as PDF</a>
+    <span class="sep">·</span>
+    <a href="pr.html">view as a GitHub PR</a>
+    <span class="sep">·</span>
+    <a href="amazon.html">view as a product page</a>
+  </div>
+</div>
+
+<script>
+var termBody = document.getElementById('term-body');
+
+var sequence = [
+  { cmd: 'whoami', out: 'Mauricio Acuña — Senior .NET Full-Stack Engineer\nBuenos Aires, Argentina · Remote (GMT-3)' },
+  { cmd: 'cat summary.txt', out: 'Senior full-stack engineer, 13+ years shipping .NET applications end to end\n(.NET Framework -> .NET 9), with C#, Blazor, Angular and React on SQL Server\nand Azure. 3 years fully remote for a US healthcare company, working daily\nin English. Earlier led distributed teams of 6-8 engineers across AR/ES/PE.\nShipping applied-AI features too: LLM apps & agents, RAG, automation.' },
+  { cmd: 'git log --oneline --reverse experience/', out: '2007-2015  feat: full-stack .NET across e-commerce, insurance, IVR, QA\n2015-2022  feat: lead 8-eng team @ Prosegur, cash-logistics + ATM key mgmt\n2022-2023  feat: lead 6-eng team @ Conekta, payments product\n2023-now   feat: Blazor micro-frontends @ Homecare Homebase (via Kopius)' },
+  { cmd: 'ls skills/', out: 'languages-frameworks/   frontend/   cloud-devops/   data/   ai/\n\nC#  .NET9  .NETCore  .NETFramework  TS  JS  Python\nBlazor  Angular  React  SignalR\nAzure  AzureDevOps  Docker  GCP\nSQLServer  Oracle  MySQL  EFCore\nLLM-agents  RAG  prompt-engineering' },
+  { cmd: 'cat availability.txt', out: 'status: open to remote roles (contractor USD or full-time)\nnotice: immediate\nenglish: upper-intermediate (B2)' },
+  { cmd: 'sudo ./hire-me.sh', out: '[sudo] password for recruiter: ********\nPermission granted.\n-> mailing mauri0686@gmail.com ... done\n-> opening linkedin.com/in/mauricio-acuña ... done\nRun complete. Let\'s talk!' }
+];
+
+function runTerminal() {
+  var i = 0;
+  termBody.innerHTML = '';
+  function nextCmd() {
+    if (i >= sequence.length) { appendPromptLine(); return; }
+    typeCmd(sequence[i], function () { i++; setTimeout(nextCmd, 350); });
+  }
+  nextCmd();
+}
+
+function typeCmd(step, done) {
+  var line = document.createElement('div');
+  var promptSpan = document.createElement('span');
+  promptSpan.className = 'prompt';
+  promptSpan.textContent = 'mauricio@career:~$ ';
+  var cmdSpan = document.createElement('span');
+  cmdSpan.className = 'out';
+  line.appendChild(promptSpan);
+  line.appendChild(cmdSpan);
+  termBody.appendChild(line);
+
+  var chars = step.cmd.split('');
+  var idx = 0;
+  var typer = setInterval(function () {
+    cmdSpan.textContent += chars[idx];
+    idx++;
+    termBody.scrollTop = termBody.scrollHeight;
+    if (idx >= chars.length) {
+      clearInterval(typer);
+      setTimeout(function () {
+        var out = document.createElement('div');
+        out.className = 'out dim';
+        out.style.margin = '.25rem 0 .9rem';
+        out.textContent = step.out;
+        termBody.appendChild(out);
+        termBody.scrollTop = termBody.scrollHeight;
+        done();
+      }, 250);
+    }
+  }, 22);
+}
+
+function appendPromptLine() {
+  var line = document.createElement('div');
+  var promptSpan = document.createElement('span');
+  promptSpan.className = 'prompt';
+  promptSpan.textContent = 'mauricio@career:~$ ';
+  var cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  line.appendChild(promptSpan);
+  line.appendChild(cursor);
+  termBody.appendChild(line);
+}
+
+runTerminal();
+</script>
+
+</body>
+</html>
+
