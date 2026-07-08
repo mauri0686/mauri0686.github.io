@@ -41,6 +41,13 @@
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   a { color: var(--accent); text-decoration: none; }
 
+  /* ---------- sticky nav ---------- */
+  nav.topnav { position: sticky; top: 0; z-index: 20; display: flex; justify-content: center; gap: 1.8rem;
+    padding: .95rem 1.4rem; background: #070f19cc; backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  nav.topnav a { font-size: .84rem; font-weight: 600; color: var(--muted); transition: color .15s ease; }
+  nav.topnav a:hover, nav.topnav a.active { color: var(--accent); }
+  @media (max-width: 560px) { nav.topnav { gap: 1.1rem; overflow-x: auto; } }
+
   /* ---------- animated aurora background ---------- */
   .aurora { position: fixed; inset: 0; z-index: -2; overflow: hidden; background: var(--bg); }
   .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5; will-change: transform; }
@@ -65,6 +72,8 @@
     box-shadow: 0 0 0 6px #38bdf814, 0 20px 60px -12px #38bdf8aa; animation: spin 9s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .photo-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 32%; display: block; border: 3px solid var(--bg); animation: spin 9s linear infinite reverse; }
+  .name-line { font-size: 1rem; font-weight: 700; letter-spacing: .2px; color: var(--text); margin-bottom: .9rem; }
+  .name-line span { font-weight: 500; color: var(--muted); }
   .status { display: inline-flex; align-items: center; gap: .5rem; font-size: .8rem; font-weight: 600; letter-spacing: .3px; color: #7ee7a0; background: #22c55e14; border: 1px solid #22c55e33; padding: .3rem .8rem; border-radius: 999px; margin-bottom: 1.3rem; }
   .status .pulse { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 0 #34d39980; animation: ping 1.8s ease-out infinite; }
   @keyframes ping { 0% { box-shadow: 0 0 0 0 #34d39980; } 70%,100% { box-shadow: 0 0 0 8px transparent; } }
@@ -177,7 +186,7 @@
     .hero h1 .w, .hero .sub, .cta-row { opacity: 1 !important; transform: none !important; animation: none !important; }
   }
   @media print {
-    .aurora, .grain, #spot, .cta-row, .contact, footer, .status { display: none !important; }
+    .aurora, .grain, #spot, .cta-row, .contact, footer, .status, nav.topnav { display: none !important; }
     body { background: #fff; color: #111; }
     .photo-ring { box-shadow: none; animation: none; }
     .hero h1 .grad, .btile .num { color: #0a1420; -webkit-text-fill-color: #0a1420; }
@@ -192,10 +201,18 @@
 <div class="grain"></div>
 <div id="spot"></div>
 
+<nav class="topnav">
+  <a href="#snapshot">Snapshot</a>
+  <a href="#experience">Experience</a>
+  <a href="#toolbox">Toolbox</a>
+  <a href="#contact">Contact</a>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
   <div class="inner">
     <div class="photo-ring"><img src="profile.jpg" alt="Mauricio Acuña"></div>
+    <div class="name-line">Mauricio Acuña <span>· Senior .NET Full-Stack Engineer</span></div>
     <div class="status"><span class="pulse"></span> Open to remote roles</div>
     <h1>
       <span class="w" style="animation-delay:.05s">I</span>
@@ -221,8 +238,8 @@
 
 <main>
 
-  <section class="block reveal hero-gap">
-    <div class="kicker">Snapshot</div>
+  <section id="snapshot" class="block reveal hero-gap">
+    <div class="kicker">01 · Snapshot</div>
     <h2>Senior engineering that reaches production.</h2>
     <div class="bento">
       <div class="btile b-years"><div class="num" data-count="13" data-suffix="+">13+</div><div class="lbl">Years shipping .NET — from .NET Framework to .NET 9, backend to cloud.</div></div>
@@ -247,8 +264,8 @@
     </div>
   </section>
 
-  <section class="block reveal">
-    <div class="kicker">Experience</div>
+  <section id="experience" class="block reveal">
+    <div class="kicker">02 · Experience</div>
     <h2>Where I have shipped.</h2>
     <div class="tl">
       <div class="tl-item">
@@ -298,8 +315,8 @@
     </div>
   </section>
 
-  <section class="block reveal">
-    <div class="kicker">Toolbox</div>
+  <section id="toolbox" class="block reveal">
+    <div class="kicker">03 · Toolbox</div>
     <h2>Technical skills.</h2>
     <div class="skgroup">
       <div class="lbl">Languages &amp; Frameworks</div>
@@ -323,7 +340,7 @@
     </div>
   </section>
 
-  <section class="contact reveal">
+  <section id="contact" class="contact reveal">
     <h2>Let&rsquo;s build something.</h2>
     <p>Available for remote roles across LATAM and the US, contractor (USD) or full-time. I usually reply the same day.</p>
     <div class="cta-row">
@@ -363,6 +380,20 @@
       b.addEventListener('mouseleave', function () { b.style.transform = ''; });
     });
   }
+
+  // scroll-spy nav
+  var navLinks = document.querySelectorAll('nav.topnav a');
+  var navSections = Array.prototype.map.call(navLinks, function (a) { return document.querySelector(a.getAttribute('href')); });
+  var spyIo = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var i = navSections.indexOf(e.target);
+      if (i > -1 && e.isIntersecting) {
+        navLinks.forEach(function (a) { a.classList.remove('active'); });
+        navLinks[i].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  navSections.forEach(function (el) { if (el) spyIo.observe(el); });
 
   // reveal on scroll
   var io = new IntersectionObserver(function (entries) {
