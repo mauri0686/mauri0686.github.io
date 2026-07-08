@@ -65,9 +65,21 @@
     background: radial-gradient(circle, #38bdf822, transparent 65%); transform: translate(-50%,-50%); }
 
   /* ---------- hero ---------- */
-  .hero { position: relative; z-index: 1; padding: 5rem 1.4rem 3rem; text-align: center; }
-  .hero .inner { max-width: 780px; margin: 0 auto; }
-  .photo-ring { width: 128px; height: 128px; margin: 0 auto 1.6rem; border-radius: 50%; padding: 4px;
+  .hero { position: relative; z-index: 1; padding: 5rem 1.4rem 3rem; text-align: center; overflow: hidden; }
+  .hero .inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+
+  /* ---------- hero graphic: neural-net constellation ---------- */
+  .hero-graphic { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; opacity: .6; mix-blend-mode: screen; }
+  .hg-node { animation: hgPulseNode 3.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes hgPulseNode { 0%,100% { opacity: .3; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.3); } }
+  .hg-pulse { stroke-dasharray: 10 260; animation: hgFlow 3.4s linear infinite; }
+  @keyframes hgFlow { to { stroke-dashoffset: -270; } }
+
+  .photo-wrap { position: relative; width: 128px; margin: 0 auto 1.6rem; }
+  .core-glow { position: absolute; left: 50%; top: 50%; width: 210px; height: 210px; margin: -105px 0 0 -105px; border-radius: 50%;
+    background: radial-gradient(circle, #38bdf83a, #818cf81c 55%, transparent 72%); filter: blur(2px); animation: coreBreathe 3.2s ease-in-out infinite; pointer-events: none; }
+  @keyframes coreBreathe { 0%,100% { transform: scale(.92); opacity: .55; } 50% { transform: scale(1.12); opacity: .95; } }
+  .photo-ring { width: 128px; height: 128px; border-radius: 50%; padding: 4px; position: relative;
     background: conic-gradient(from 210deg, var(--accent), var(--accent-3), var(--accent-2), var(--accent));
     box-shadow: 0 0 0 6px #38bdf814, 0 20px 60px -12px #38bdf8aa; animation: spin 9s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
@@ -182,11 +194,11 @@
   footer a:hover { color: var(--accent); }
 
   @media (prefers-reduced-motion: reduce) {
-    .blob, .photo-ring, .photo-ring img { animation: none !important; }
+    .blob, .photo-ring, .photo-ring img, .hg-node, .hg-pulse, .core-glow { animation: none !important; }
     .hero h1 .w, .hero .sub, .cta-row { opacity: 1 !important; transform: none !important; animation: none !important; }
   }
   @media print {
-    .aurora, .grain, #spot, .cta-row, .contact, footer, .status, nav.topnav { display: none !important; }
+    .aurora, .grain, #spot, .cta-row, .contact, footer, .status, nav.topnav, .hero-graphic, .core-glow { display: none !important; }
     body { background: #fff; color: #111; }
     .photo-ring { box-shadow: none; animation: none; }
     .hero h1 .grad, .btile .num { color: #0a1420; -webkit-text-fill-color: #0a1420; }
@@ -210,8 +222,66 @@
 
 <!-- HERO -->
 <section class="hero">
+  <svg class="hero-graphic" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="hgLine" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#7dd3fc" stop-opacity=".85"/>
+        <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="hgNode" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#bfe9ff"/>
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g class="hg-links" fill="none" stroke="url(#hgLine)" stroke-width="1.1">
+      <path d="M120,120 L480,70"/><path d="M230,230 L480,170"/><path d="M230,230 L480,270"/>
+      <path d="M340,340 L480,270"/><path d="M340,340 L480,370"/><path d="M450,450 L480,370"/>
+      <path d="M450,450 L480,470"/><path d="M560,560 L480,570"/>
+      <path d="M480,70 L900,70"/><path d="M480,170 L900,170"/><path d="M480,170 L900,270"/>
+      <path d="M480,270 L900,270"/><path d="M480,270 L900,370"/><path d="M480,370 L900,370"/>
+      <path d="M480,370 L900,470"/><path d="M480,570 L900,570"/>
+      <path d="M900,70 L1300,150"/><path d="M900,170 L1300,150"/><path d="M900,270 L1300,280"/>
+      <path d="M900,370 L1300,280"/><path d="M900,370 L1300,410"/><path d="M900,470 L1300,410"/>
+      <path d="M900,470 L1300,540"/><path d="M900,570 L1300,540"/>
+    </g>
+    <g class="hg-pulses" fill="none" stroke="#bfe9ff" stroke-width="2" stroke-linecap="round">
+      <path class="hg-pulse" style="animation-delay:0s" d="M120,120 L480,70"/>
+      <path class="hg-pulse" style="animation-delay:.6s" d="M340,340 L480,370"/>
+      <path class="hg-pulse" style="animation-delay:1.2s" d="M480,170 L900,270"/>
+      <path class="hg-pulse" style="animation-delay:1.8s" d="M480,370 L900,470"/>
+      <path class="hg-pulse" style="animation-delay:2.4s" d="M900,70 L1300,150"/>
+      <path class="hg-pulse" style="animation-delay:3s" d="M900,470 L1300,540"/>
+    </g>
+    <g class="hg-nodes" fill="url(#hgNode)">
+      <circle class="hg-node" style="animation-delay:.1s" cx="120" cy="120" r="5"/>
+      <circle class="hg-node" style="animation-delay:.4s" cx="230" cy="230" r="5"/>
+      <circle class="hg-node" style="animation-delay:.7s" cx="340" cy="340" r="5"/>
+      <circle class="hg-node" style="animation-delay:1.0s" cx="450" cy="450" r="5"/>
+      <circle class="hg-node" style="animation-delay:1.3s" cx="560" cy="560" r="5"/>
+      <circle class="hg-node" style="animation-delay:.2s" cx="480" cy="70" r="6"/>
+      <circle class="hg-node" style="animation-delay:.5s" cx="480" cy="170" r="6"/>
+      <circle class="hg-node" style="animation-delay:.8s" cx="480" cy="270" r="6"/>
+      <circle class="hg-node" style="animation-delay:1.1s" cx="480" cy="370" r="6"/>
+      <circle class="hg-node" style="animation-delay:1.4s" cx="480" cy="470" r="6"/>
+      <circle class="hg-node" style="animation-delay:1.7s" cx="480" cy="570" r="6"/>
+      <circle class="hg-node" style="animation-delay:.3s" cx="900" cy="70" r="6"/>
+      <circle class="hg-node" style="animation-delay:.6s" cx="900" cy="170" r="6"/>
+      <circle class="hg-node" style="animation-delay:.9s" cx="900" cy="270" r="6"/>
+      <circle class="hg-node" style="animation-delay:1.2s" cx="900" cy="370" r="6"/>
+      <circle class="hg-node" style="animation-delay:1.5s" cx="900" cy="470" r="6"/>
+      <circle class="hg-node" style="animation-delay:1.8s" cx="900" cy="570" r="6"/>
+      <circle class="hg-node" style="animation-delay:.4s" cx="1300" cy="150" r="5"/>
+      <circle class="hg-node" style="animation-delay:.9s" cx="1300" cy="280" r="5"/>
+      <circle class="hg-node" style="animation-delay:1.4s" cx="1300" cy="410" r="5"/>
+      <circle class="hg-node" style="animation-delay:1.9s" cx="1300" cy="540" r="5"/>
+    </g>
+  </svg>
   <div class="inner">
-    <div class="photo-ring"><img src="profile.jpg" alt="Mauricio Acuña"></div>
+    <div class="photo-wrap">
+      <div class="core-glow"></div>
+      <div class="photo-ring"><img src="profile.jpg" alt="Mauricio Acuña"></div>
+    </div>
     <div class="name-line">Mauricio Acuña <span>· Senior .NET Full-Stack Engineer</span></div>
     <div class="status"><span class="pulse"></span> Open to remote roles</div>
     <h1>
