@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mauricio Acuña — CV</title>
+<style>
+  :root{
+    --navy:#28324f; --ink:#20283a; --blue:#3f5c96; --muted:#6b7280;
+    --line:#e3e6ec; --card:#f5f6f8; --paneltxt:#c3cad9;
+  }
+  @page{ size:A4; margin:0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ background:#fff; }
+  body{
+    font-family:"Segoe UI",-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); font-size:10px; line-height:1.5;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .page{ width:210mm; min-height:297mm; padding:13mm 14mm; position:relative; }
+  .page + .page{ page-break-before:always; }
+  .label{ font-size:8px; letter-spacing:.18em; color:var(--muted); font-weight:600; text-transform:uppercase; }
+  .divider{ height:2px; background:var(--ink); margin:14px 0; }
+  .hair{ height:1px; background:var(--line); }
+
+  .top{ display:grid; grid-template-columns:66px 1fr 220px; gap:20px; align-items:stretch; }
+  .badge{ background:var(--navy); border-radius:10px; color:#fff; padding:10px 0 8px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; }
+  .badge b{ font-size:22px; font-weight:800; letter-spacing:.02em; }
+  .badge span{ font-size:8px; letter-spacing:.18em; color:#9aa6c0; }
+  .name h1{ font-size:40px; line-height:1.02; font-weight:800; letter-spacing:-.01em; }
+  .name .role{ font-size:14px; font-weight:700; margin-top:8px; }
+  .name .sub{ font-size:10px; color:var(--muted); margin-top:3px; }
+  .contact{ background:var(--navy); border-radius:8px; color:#fff; padding:14px 16px; font-size:10px; }
+  .contact .yrs{ font-size:8px; letter-spacing:.14em; color:#8f9bb6; margin-bottom:16px; }
+  .contact a,.contact .line{ display:block; color:#fff; font-weight:700; text-decoration:none; line-height:1.7; }
+  .contact .loc{ color:#8f9bb6; font-weight:400; margin-top:14px; }
+
+  .row{ display:grid; grid-template-columns:110px 1fr; gap:16px; }
+  .prof-h{ font-size:19px; font-weight:800; line-height:1.25; color:var(--ink); margin-bottom:8px; }
+  .prof-p{ font-size:10.5px; color:#414a5c; }
+
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin:18px 0 6px; }
+  .stat{ padding:2px 14px; border-left:1px solid var(--line); }
+  .stat:first-child{ border-left:0; padding-left:0; }
+  .stat .n{ font-size:26px; font-weight:800; color:var(--blue); line-height:1; }
+  .stat .k{ font-size:8px; letter-spacing:.12em; font-weight:700; text-transform:uppercase; margin-top:6px; }
+  .stat .d{ font-size:9px; color:var(--muted); margin-top:2px; }
+
+  .sec{ display:flex; align-items:center; gap:10px; margin:20px 0 12px; }
+  .sec .num{ background:var(--navy); color:#fff; font-size:9px; font-weight:700; padding:4px 6px; border-radius:3px; }
+  .sec .t{ font-size:9px; letter-spacing:.2em; font-weight:700; text-transform:uppercase; }
+
+  .exp{ background:var(--card); border-left:3px solid var(--blue); border-radius:0 6px 6px 0; padding:14px 16px; display:grid; grid-template-columns:170px 1fr; gap:18px; }
+  .exp .meta .l{ font-size:8px; letter-spacing:.16em; color:var(--muted); font-weight:600; text-transform:uppercase; }
+  .exp .meta .r{ font-size:14px; font-weight:700; margin-top:6px; line-height:1.15; }
+  .exp .meta .c{ font-size:11px; font-weight:700; color:var(--blue); margin-top:3px; }
+  .exp .meta .when{ font-size:9px; color:var(--muted); margin-top:8px; }
+  .exp .body .lead{ font-size:11px; font-weight:700; margin-bottom:7px; }
+  .bul{ display:grid; grid-template-columns:14px 1fr; gap:2px; font-size:10px; color:#414a5c; margin-bottom:5px; }
+  .bul .a{ color:var(--blue); font-weight:700; }
+
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .two h3{ font-size:14px; font-weight:700; }
+  .two .co{ font-size:9px; font-weight:700; color:var(--blue); letter-spacing:.02em; margin:3px 0 7px; }
+  .two p{ font-size:10px; color:#414a5c; }
+
+  .foot{ position:absolute; left:14mm; right:14mm; bottom:10mm; display:flex; justify-content:space-between; font-size:8px; letter-spacing:.16em; color:var(--muted); font-weight:600; }
+
+  .p2head{ display:flex; justify-content:space-between; align-items:baseline; }
+  .p2head .nm{ font-size:22px; font-weight:800; }
+  .p2head .pill{ font-size:8px; letter-spacing:.14em; font-weight:700; color:var(--muted); }
+  .p2sub{ font-size:8px; letter-spacing:.14em; color:var(--muted); font-weight:600; text-transform:uppercase; margin-top:4px; }
+  .grid2{ display:grid; grid-template-columns:1fr 40%; gap:26px; margin-top:8px; }
+  .h2{ font-size:22px; font-weight:800; margin-bottom:4px; }
+  .muted{ font-size:10px; color:var(--muted); margin-bottom:14px; }
+
+  .tl{ position:relative; padding-left:18px; }
+  .tl::before{ content:""; position:absolute; left:5px; top:4px; bottom:4px; width:2px; background:var(--navy); }
+  .tl .it{ position:relative; margin-bottom:15px; }
+  .tl .it::before{ content:""; position:absolute; left:-16px; top:2px; width:9px; height:9px; border-radius:50%; background:#fff; border:2px solid var(--navy); }
+  .tl .yr{ font-size:9px; letter-spacing:.08em; color:var(--muted); font-weight:600; }
+  .tl .org{ font-size:12.5px; font-weight:700; margin-top:1px; }
+  .tl .rl{ font-size:9px; font-weight:700; color:var(--ink); }
+  .tl .ds{ font-size:9.5px; color:#4b5468; margin-top:2px; }
+
+  .indbox{ background:var(--card); border-left:3px solid var(--navy); border-radius:0 6px 6px 0; padding:11px 14px; margin-top:6px; }
+  .indbox .l{ font-size:8px; letter-spacing:.16em; color:var(--blue); font-weight:700; text-transform:uppercase; }
+  .indbox .v{ font-size:10.5px; font-weight:700; margin-top:4px; }
+
+  .panel{ background:var(--navy); border-radius:8px; color:#fff; padding:18px 18px 20px; }
+  .panel h2{ font-size:20px; font-weight:800; margin-bottom:14px; }
+  .panel .grp{ margin-bottom:11px; }
+  .panel .gk{ font-size:8px; letter-spacing:.14em; color:#8f9bb6; font-weight:700; text-transform:uppercase; }
+  .panel .gv{ font-size:10px; color:#dfe4ee; margin-top:3px; line-height:1.5; }
+  .panel .sep{ height:1px; background:#3c496b; margin:13px 0; }
+  .panel .gk2{ font-size:8px; letter-spacing:.14em; color:#8f9bb6; font-weight:700; text-transform:uppercase; margin-top:11px; }
+
+  .recos{ margin-top:20px; background:var(--card); border-radius:8px; padding:16px 18px; display:grid; grid-template-columns:120px 1fr 1fr; gap:22px; }
+  .recos .lab{ font-size:8px; letter-spacing:.16em; color:var(--blue); font-weight:700; text-transform:uppercase; line-height:1.5; }
+  .recos .q{ font-style:italic; font-size:10px; color:#3b4557; display:block; }
+  .recos .who{ font-size:9px; font-weight:700; margin-top:8px; }
+  .recos .verify{ font-size:8.5px; font-weight:700; color:var(--blue); letter-spacing:.08em; margin-top:10px; }
+</style>
+</head>
+<body>
+
+<!-- ============ PÁGINA 1 ============ -->
+<section class="page">
+  <div class="top">
+    <div class="badge"><b>MA</b><span>2026</span></div>
+    <div class="name">
+      <div class="label">Remoto / Contractor o relación de dependencia</div>
+      <h1>Mauricio<br>Acuña</h1>
+      <div class="role">Desarrollador .NET Senior / Tech Lead</div>
+      <div class="sub">Desarrollo .NET full-stack · Liderazgo técnico</div>
+    </div>
+    <div class="contact">
+      <div class="yrs">13+ AÑOS · C# · .NET</div>
+      <a>mauri0686@gmail.com</a>
+      <a>linkedin.com/in/mauri0686</a>
+      <a>mauri0686.github.io</a>
+      <div class="loc">Buenos Aires · GMT-3 · Remoto EE. UU./LATAM</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="row">
+    <div class="label">Perfil / 01</div>
+    <div>
+      <div class="prof-h">Desarrollador de Software Senior &nbsp;|&nbsp; 13 años en .NET/C# &nbsp;|&nbsp; LLMs, RAG y agentes en producción</div>
+      <p class="prof-p">Tengo más de 13 años de experiencia en desarrollo de software. Desde 2023 trabajo de forma remota con un equipo de salud de EE. UU. y uso inglés todos los días. Antes lideré equipos distribuidos que trabajaban en sistemas de pagos y logística de transporte de valores. Mi trabajo incluye APIs, datos, frontend, pruebas y releases. Fuera de mi trabajo principal, desarrollo herramientas para programadores con Python, LLM, RAG y MCP.</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">13</div><div class="k">Años</div><div class="d">trabajando con .NET</div></div>
+    <div class="stat"><div class="n">8</div><div class="k">Desarrolladores</div><div class="d">mayor equipo liderado</div></div>
+    <div class="stat"><div class="n">3+</div><div class="k">Años</div><div class="d">remoto con EE. UU.</div></div>
+    <div class="stat"><div class="n">3</div><div class="k">Países</div><div class="d">Argentina, España y Perú</div></div>
+  </div>
+
+  <div class="sec"><span class="num">01</span><span class="t">Hoy / Salud de EE. UU.</span></div>
+  <div class="exp">
+    <div class="meta">
+      <div class="l">Experiencia seleccionada</div>
+      <div class="r">Desarrollador de Software Senior</div>
+      <div class="c">Homecare Homebase</div>
+      <div class="when">abr 2023 – actualidad · Contrato vía Kopius · Remoto · Equipo de EE. UU. en inglés</div>
+    </div>
+    <div class="body">
+      <div class="lead">Funcionalidades clínicas para los productos HCHB Care+ y Patient Center.</div>
+      <div class="bul"><span class="a">↳</span><span>Desarrollo micro-frontends con Blazor WebAssembly para signos vitales, datos demográficos, revisión de visitas, evaluación física y documentación clínica (3+ años con Blazor).</span></div>
+      <div class="bul"><span class="a">↳</span><span>Integro clientes y APIs GraphQL tipados con HotChocolate, StrawberryShake, Dapper y SQL Server.</span></div>
+      <div class="bul"><span class="a">↳</span><span>Uso LaunchDarkly y CI/CD en Azure DevOps para liberar cambios de forma gradual. Pruebo con xUnit, bUnit, Moq y FluentAssertions.</span></div>
+      <div class="bul"><span class="a">↳</span><span>Trabajo diariamente en inglés con producto, diseño, ingeniería y QA de EE. UU., desde refinamiento hasta soporte productivo.</span></div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="num">02</span><span class="t">Experiencia en Liderazgo</span></div>
+  <div class="two">
+    <div>
+      <h3>Project Leader</h3>
+      <div class="co">Conekta · Pagos · jul 2022 – jul 2023</div>
+      <p>Lideré 6 desarrolladores en una plataforma de pagos, haciendo de líder de entrega, Scrum master y analista. Definí y refiné historias de usuario junto a los product owners, traduciendo la necesidad de negocio en alcance técnico. Coordiné planificación, dependencias, bloqueos y releases con Scrum y Jira.</p>
+    </div>
+    <div>
+      <h3>Responsable de IT / Desarrollador .NET Senior</h3>
+      <div class="co">Prosegur · Logística · 2015 – 2022</div>
+      <p>Desarrollé integraciones para SOL, la plataforma central de logística de caudales que manejaba recorridos, servicios y el cierre de programación de recursos y de servicios, incluido el puente con el sistema legado de facturación. Después pasé a la software factory y dediqué ~3 años a construir Prosegur Keys desde cero con .NET y Angular, una sola aplicación web que unificaba los web services de varias marcas de bóvedas y entregaba la clave que el operador necesita para abrir la caja de un camión o la de un cliente. Ascendí a responsable de IT de un equipo distribuido de 8 personas en Argentina, España y Perú.</p>
+    </div>
+  </div>
+
+  <div class="foot"><span>EMAIL&nbsp;&nbsp;&nbsp;LINKEDIN&nbsp;&nbsp;&nbsp;PORTFOLIO</span><span>PÁGINA 1 / 2</span></div>
+</section>
+
+<!-- ============ PÁGINA 2 ============ -->
+<section class="page">
+  <div class="p2head">
+    <div class="nm">Mauricio Acuña</div>
+    <div class="pill">02 / EXPERIENCIA + STACK</div>
+  </div>
+  <div class="p2sub">Desarrollador .NET Senior / Tech Lead · Desarrollo .NET full-stack · Liderazgo técnico</div>
+  <div class="divider"></div>
+
+  <div class="grid2">
+    <div>
+      <div class="h2">Experiencia anterior</div>
+      <div class="muted">Roles anteriores en automatización de QA, e-commerce, seguros, IVR y sistemas de negocio.</div>
+      <div class="tl">
+        <div class="it"><div class="yr">2014 – 2015</div><div class="org">Zoologic</div><div class="rl">Desarrollador .NET</div><div class="ds">Construí un portal interno de QA que ejecutaba lotes de pruebas automatizadas contra el producto central de facturación.</div></div>
+        <div class="it"><div class="yr">2013 – 2014</div><div class="org">New Digital Way</div><div class="rl">Desarrollador .NET</div><div class="ds">Implementé funcionalidades para Musimundo.com con ASP.NET MVC y SQL Server.</div></div>
+        <div class="it"><div class="yr">2011 – 2013</div><div class="org">AXA Assistance</div><div class="rl">Desarrollador .NET</div><div class="ds">Desarrollé mejoras para una plataforma central de asistencia de seguros.</div></div>
+        <div class="it"><div class="yr">2009 – 2011</div><div class="org">Advance Technology Solutions</div><div class="rl">Desarrollador .NET Junior</div><div class="ds">Construí soluciones IVR e integraciones de datos con .NET Framework y SQL Server.</div></div>
+        <div class="it"><div class="yr">2007 – 2009</div><div class="org">Grupo Abax</div><div class="rl">Desarrollador .NET Junior</div><div class="ds">Desarrollé aplicaciones de negocio con .NET Framework 2.0 y SQL Server.</div></div>
+      </div>
+      <div class="indbox">
+        <div class="l">Experiencia por industria</div>
+        <div class="v">Salud / Pagos / Logística segura / E-commerce / Seguros / IVR</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Stack principal</h2>
+      <div class="grp"><div class="gk">Backend / Arq.</div><div class="gv">C# · .NET 8 · .NET Framework · ASP.NET Core/MVC · Web API · REST · GraphQL · DDD · SOLID</div></div>
+      <div class="grp"><div class="gk">Frontend</div><div class="gv">Blazor WebAssembly (3+ años) · Angular (3 años) · TypeScript · JavaScript · Telerik UI · Piral · HTML/CSS · React (proyectos personales)</div></div>
+      <div class="grp"><div class="gk">Datos</div><div class="gv">SQL Server · Oracle · MySQL · Informix · MongoDB · Dapper</div></div>
+      <div class="grp"><div class="gk">Cloud / Entrega</div><div class="gv">Azure · Azure DevOps · CI/CD · Docker · Google Cloud · Git · LaunchDarkly · Jira</div></div>
+      <div class="grp"><div class="gk">Calidad</div><div class="gv">xUnit · bUnit · Moq · FluentAssertions · Code review · SonarQube · Debugging</div></div>
+      <div class="grp"><div class="gk">IA / Herramientas</div><div class="gv">Python · APIs de LLM (multi-modelo) · RAG · Agentes de IA · MCP</div></div>
+      <div class="sep"></div>
+      <div class="gk2">Formación</div><div class="gv">Estudios de Ingeniería en Sistemas<br>Universidad Abierta Interamericana · 2008 – 2011</div>
+      <div class="gk2">Idiomas</div><div class="gv">Español: nativo<br>Inglés: nivel profesional (uso diario con equipos de EE. UU. desde 2023)</div>
+    </div>
+  </div>
+
+  <div class="recos">
+    <div class="lab">Recomendaciones destacadas</div>
+    <div>
+      <span class="q">“Constante y confiable, con un compromiso claro de hacer avanzar las cosas. Se hace cargo y sigue empujando hasta asegurarse de que las cosas se completen.”</span>
+      <div class="who">Sergio Rofi · Tech Lead</div>
+    </div>
+    <div>
+      <span class="q">“Mauricio es un gran profesional, muy dedicado, responsable, inteligente, colaborativo, sabe escuchar y ayudar a sus compañeros.”</span>
+      <div class="who">Fernando Matosinhos · Tech Lead, Full-Stack .NET</div>
+      <div class="verify">Ver en LinkedIn →</div>
+    </div>
+  </div>
+
+  <div class="foot"><span>EMAIL&nbsp;&nbsp;&nbsp;LINKEDIN&nbsp;&nbsp;&nbsp;PORTFOLIO</span><span>PÁGINA 2 / 2</span></div>
+</section>
+
+</body>
+</html>

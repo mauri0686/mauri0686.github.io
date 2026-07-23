@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mauricio Acuña — CV</title>
+<style>
+  :root{
+    --navy:#28324f; --ink:#20283a; --blue:#3f5c96; --muted:#6b7280;
+    --line:#e3e6ec; --card:#f5f6f8; --paneltxt:#c3cad9;
+  }
+  @page{ size:A4; margin:0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ background:#fff; }
+  body{
+    font-family:"Segoe UI",-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); font-size:10px; line-height:1.5;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .page{ width:210mm; min-height:297mm; padding:13mm 14mm; position:relative; }
+  .page + .page{ page-break-before:always; }
+  .label{ font-size:8px; letter-spacing:.18em; color:var(--muted); font-weight:600; text-transform:uppercase; }
+  .divider{ height:2px; background:var(--ink); margin:14px 0; }
+  .hair{ height:1px; background:var(--line); }
+
+  /* ---------- header ---------- */
+  .top{ display:grid; grid-template-columns:66px 1fr 220px; gap:20px; align-items:stretch; }
+  .badge{ background:var(--navy); border-radius:10px; color:#fff; padding:10px 0 8px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; }
+  .badge b{ font-size:22px; font-weight:800; letter-spacing:.02em; }
+  .badge span{ font-size:8px; letter-spacing:.18em; color:#9aa6c0; }
+  .name h1{ font-size:40px; line-height:1.02; font-weight:800; letter-spacing:-.01em; }
+  .name .role{ font-size:14px; font-weight:700; margin-top:8px; }
+  .name .sub{ font-size:10px; color:var(--muted); margin-top:3px; }
+  .contact{ background:var(--navy); border-radius:8px; color:#fff; padding:14px 16px; font-size:10px; }
+  .contact .yrs{ font-size:8px; letter-spacing:.14em; color:#8f9bb6; margin-bottom:16px; }
+  .contact a,.contact .line{ display:block; color:#fff; font-weight:700; text-decoration:none; line-height:1.7; }
+  .contact .loc{ color:#8f9bb6; font-weight:400; margin-top:14px; }
+
+  /* ---------- profile ---------- */
+  .row{ display:grid; grid-template-columns:110px 1fr; gap:16px; }
+  .prof-h{ font-size:19px; font-weight:800; line-height:1.25; color:var(--ink); margin-bottom:8px; }
+  .prof-p{ font-size:10.5px; color:#414a5c; }
+
+  /* ---------- stats ---------- */
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin:18px 0 6px; }
+  .stat{ padding:2px 14px; border-left:1px solid var(--line); }
+  .stat:first-child{ border-left:0; padding-left:0; }
+  .stat .n{ font-size:26px; font-weight:800; color:var(--blue); line-height:1; }
+  .stat .k{ font-size:8px; letter-spacing:.14em; font-weight:700; text-transform:uppercase; margin-top:6px; }
+  .stat .d{ font-size:9px; color:var(--muted); margin-top:2px; }
+
+  /* ---------- section badge ---------- */
+  .sec{ display:flex; align-items:center; gap:10px; margin:20px 0 12px; }
+  .sec .num{ background:var(--navy); color:#fff; font-size:9px; font-weight:700; padding:4px 6px; border-radius:3px; }
+  .sec .t{ font-size:9px; letter-spacing:.2em; font-weight:700; text-transform:uppercase; }
+
+  /* ---------- experience card ---------- */
+  .exp{ background:var(--card); border-left:3px solid var(--blue); border-radius:0 6px 6px 0; padding:14px 16px; display:grid; grid-template-columns:170px 1fr; gap:18px; }
+  .exp .meta .l{ font-size:8px; letter-spacing:.16em; color:var(--muted); font-weight:600; text-transform:uppercase; }
+  .exp .meta .r{ font-size:14px; font-weight:700; margin-top:6px; line-height:1.15; }
+  .exp .meta .c{ font-size:11px; font-weight:700; color:var(--blue); margin-top:3px; }
+  .exp .meta .when{ font-size:9px; color:var(--muted); margin-top:8px; }
+  .exp .body .lead{ font-size:11px; font-weight:700; margin-bottom:7px; }
+  .bul{ display:grid; grid-template-columns:14px 1fr; gap:2px; font-size:10px; color:#414a5c; margin-bottom:5px; }
+  .bul .a{ color:var(--blue); font-weight:700; }
+
+  /* ---------- two column leadership ---------- */
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .two h3{ font-size:14px; font-weight:700; }
+  .two .co{ font-size:9px; font-weight:700; color:var(--blue); letter-spacing:.02em; margin:3px 0 7px; }
+  .two p{ font-size:10px; color:#414a5c; }
+
+  /* ---------- footer ---------- */
+  .foot{ position:absolute; left:14mm; right:14mm; bottom:10mm; display:flex; justify-content:space-between; font-size:8px; letter-spacing:.16em; color:var(--muted); font-weight:600; }
+
+  /* ---------- page 2 ---------- */
+  .p2head{ display:flex; justify-content:space-between; align-items:baseline; }
+  .p2head .nm{ font-size:22px; font-weight:800; }
+  .p2head .pill{ font-size:8px; letter-spacing:.14em; font-weight:700; color:var(--muted); }
+  .p2sub{ font-size:8px; letter-spacing:.14em; color:var(--muted); font-weight:600; text-transform:uppercase; margin-top:4px; }
+  .grid2{ display:grid; grid-template-columns:1fr 40%; gap:26px; margin-top:8px; }
+  .h2{ font-size:22px; font-weight:800; margin-bottom:4px; }
+  .muted{ font-size:10px; color:var(--muted); margin-bottom:14px; }
+
+  .tl{ position:relative; padding-left:18px; }
+  .tl::before{ content:""; position:absolute; left:5px; top:4px; bottom:4px; width:2px; background:var(--navy); }
+  .tl .it{ position:relative; margin-bottom:15px; }
+  .tl .it::before{ content:""; position:absolute; left:-16px; top:2px; width:9px; height:9px; border-radius:50%; background:#fff; border:2px solid var(--navy); }
+  .tl .yr{ font-size:9px; letter-spacing:.08em; color:var(--muted); font-weight:600; }
+  .tl .org{ font-size:12.5px; font-weight:700; margin-top:1px; }
+  .tl .rl{ font-size:9px; font-weight:700; color:var(--ink); }
+  .tl .ds{ font-size:9.5px; color:#4b5468; margin-top:2px; }
+
+  .indbox{ background:var(--card); border-left:3px solid var(--navy); border-radius:0 6px 6px 0; padding:11px 14px; margin-top:6px; }
+  .indbox .l{ font-size:8px; letter-spacing:.16em; color:var(--blue); font-weight:700; text-transform:uppercase; }
+  .indbox .v{ font-size:10.5px; font-weight:700; margin-top:4px; }
+
+  .panel{ background:var(--navy); border-radius:8px; color:#fff; padding:18px 18px 20px; }
+  .panel h2{ font-size:20px; font-weight:800; margin-bottom:14px; }
+  .panel .grp{ margin-bottom:11px; }
+  .panel .gk{ font-size:8px; letter-spacing:.14em; color:#8f9bb6; font-weight:700; text-transform:uppercase; }
+  .panel .gv{ font-size:10px; color:#dfe4ee; margin-top:3px; line-height:1.5; }
+  .panel .sep{ height:1px; background:#3c496b; margin:13px 0; }
+  .panel .gk2{ font-size:8px; letter-spacing:.14em; color:#8f9bb6; font-weight:700; text-transform:uppercase; margin-top:11px; }
+
+  .recos{ margin-top:20px; background:var(--card); border-radius:8px; padding:16px 18px; display:grid; grid-template-columns:120px 1fr 1fr; gap:22px; }
+  .recos .lab{ font-size:8px; letter-spacing:.16em; color:var(--blue); font-weight:700; text-transform:uppercase; line-height:1.5; }
+  .recos q,.recos .q{ font-style:italic; font-size:10px; color:#3b4557; display:block; }
+  .recos .who{ font-size:9px; font-weight:700; margin-top:8px; }
+  .recos .verify{ font-size:8.5px; font-weight:700; color:var(--blue); letter-spacing:.08em; margin-top:10px; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="top">
+    <div class="badge"><b>MA</b><span>2026</span></div>
+    <div class="name">
+      <div class="label">Remote / Contract or full-time</div>
+      <h1>Mauricio<br>Acuña</h1>
+      <div class="role">Senior .NET Engineer / Tech Lead</div>
+      <div class="sub">Full-stack .NET development · Technical leadership</div>
+    </div>
+    <div class="contact">
+      <div class="yrs">13+ YEARS · C# · .NET</div>
+      <a>mauri0686@gmail.com</a>
+      <a>linkedin.com/in/mauri0686</a>
+      <a>mauri0686.github.io</a>
+      <div class="loc">Buenos Aires · GMT-3 · Remote US/LATAM</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="row">
+    <div class="label">Profile / 01</div>
+    <div>
+      <div class="prof-h">Senior Software Engineer &nbsp;|&nbsp; 13 Years in .NET/C# &nbsp;|&nbsp; Shipping LLM, RAG and Agent Systems</div>
+      <p class="prof-p">I have more than 13 years of experience in software development. Since 2023, I have worked remotely with a US healthcare team and used English every day. Before that, I led distributed teams working on payment and cash-logistics systems. My work covers APIs, data, frontend development, testing and releases. I also build developer tools with Python, LLMs, RAG and MCP.</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">13</div><div class="k">Years</div><div class="d">working with .NET</div></div>
+    <div class="stat"><div class="n">8</div><div class="k">Engineers</div><div class="d">largest team led</div></div>
+    <div class="stat"><div class="n">3+</div><div class="k">Years</div><div class="d">remote with US teams</div></div>
+    <div class="stat"><div class="n">3</div><div class="k">Countries</div><div class="d">Argentina, Spain and Peru</div></div>
+  </div>
+
+  <div class="sec"><span class="num">01</span><span class="t">Now / US Healthcare</span></div>
+  <div class="exp">
+    <div class="meta">
+      <div class="l">Selected experience</div>
+      <div class="r">Senior Software Engineer</div>
+      <div class="c">Homecare Homebase</div>
+      <div class="when">Apr 2023 – Present · Contract via Kopius · Remote · English-speaking US team</div>
+    </div>
+    <div class="body">
+      <div class="lead">Clinician-facing features for the HCHB Care+ and Patient Center products.</div>
+      <div class="bul"><span class="a">↳</span><span>Develop Blazor WebAssembly micro-frontends for vitals, demographics, visit review, physical assessment and clinical documentation (3+ years with Blazor).</span></div>
+      <div class="bul"><span class="a">↳</span><span>Integrate typed GraphQL clients and APIs with HotChocolate, StrawberryShake, Dapper and SQL Server.</span></div>
+      <div class="bul"><span class="a">↳</span><span>Use LaunchDarkly and Azure DevOps CI/CD for gradual releases. Test with xUnit, bUnit, Moq and FluentAssertions.</span></div>
+      <div class="bul"><span class="a">↳</span><span>Work daily in English with US product, design, engineering and QA teams, from refinement through production support.</span></div>
+    </div>
+  </div>
+
+  <div class="sec"><span class="num">02</span><span class="t">Leadership Experience</span></div>
+  <div class="two">
+    <div>
+      <h3>Project Leader</h3>
+      <div class="co">Conekta · Payments · Jul 2022 – Jul 2023</div>
+      <p>Led 6 developers on a payments platform, acting as delivery lead, Scrum master and analyst. Defined and refined user stories with the product owners, turning business needs into technical scope. Ran planning, dependencies, blockers and releases with Scrum and Jira.</p>
+    </div>
+    <div>
+      <h3>IT Lead / Senior .NET Engineer</h3>
+      <div class="co">Prosegur · Logistics · 2015 – 2022</div>
+      <p>Built integrations for SOL, the core cash-in-transit platform that handled routes, services and the scheduling and closing of resources and services, including the bridge to the legacy billing system. Later moved to the software factory and spent ~3 years building Prosegur Keys from scratch with .NET and Angular, a single web application that unified the web-service APIs of several vault manufacturers and issued the code an operator needs to open a truck safe or a client safe. Promoted to IT lead of a distributed team of 8 people across Argentina, Spain and Peru.</p>
+    </div>
+  </div>
+
+  <div class="foot"><span>EMAIL&nbsp;&nbsp;&nbsp;LINKEDIN&nbsp;&nbsp;&nbsp;PORTFOLIO</span><span>PAGE 1 / 2</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="p2head">
+    <div class="nm">Mauricio Acuña</div>
+    <div class="pill">02 / EXPERIENCE + STACK</div>
+  </div>
+  <div class="p2sub">Senior .NET Engineer / Tech Lead · Full-stack .NET development · Technical leadership</div>
+  <div class="divider"></div>
+
+  <div class="grid2">
+    <div>
+      <div class="h2">Earlier experience</div>
+      <div class="muted">Previous roles in QA automation, e-commerce, insurance, IVR and business systems.</div>
+      <div class="tl">
+        <div class="it"><div class="yr">2014 – 2015</div><div class="org">Zoologic</div><div class="rl">.NET Developer</div><div class="ds">Built an internal QA portal that ran automated test batches against the core billing product.</div></div>
+        <div class="it"><div class="yr">2013 – 2014</div><div class="org">New Digital Way</div><div class="rl">.NET Developer</div><div class="ds">Implemented features for Musimundo.com with ASP.NET MVC and SQL Server.</div></div>
+        <div class="it"><div class="yr">2011 – 2013</div><div class="org">AXA Assistance</div><div class="rl">.NET Developer</div><div class="ds">Developed enhancements for a core insurance-assistance platform.</div></div>
+        <div class="it"><div class="yr">2009 – 2011</div><div class="org">Advance Technology Solutions</div><div class="rl">Junior .NET Developer</div><div class="ds">Built IVR solutions and database integrations with .NET Framework and SQL Server.</div></div>
+        <div class="it"><div class="yr">2007 – 2009</div><div class="org">Grupo Abax</div><div class="rl">Junior .NET Developer</div><div class="ds">Developed business applications with .NET Framework 2.0 and SQL Server.</div></div>
+      </div>
+      <div class="indbox">
+        <div class="l">Industry experience</div>
+        <div class="v">Healthcare / Payments / Secure logistics / E-commerce / Insurance / IVR</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Core stack</h2>
+      <div class="grp"><div class="gk">Backend / Arch</div><div class="gv">C# · .NET 8 · .NET Framework · ASP.NET Core/MVC · Web API · REST · GraphQL · DDD · SOLID</div></div>
+      <div class="grp"><div class="gk">Frontend</div><div class="gv">Blazor WebAssembly (3+ yrs) · Angular (3 yrs) · TypeScript · JavaScript · Telerik UI · Piral · HTML/CSS · React (personal projects)</div></div>
+      <div class="grp"><div class="gk">Data</div><div class="gv">SQL Server · Oracle · MySQL · Informix · MongoDB · Dapper</div></div>
+      <div class="grp"><div class="gk">Cloud / Delivery</div><div class="gv">Azure · Azure DevOps · CI/CD · Docker · Google Cloud · Git · LaunchDarkly · Jira</div></div>
+      <div class="grp"><div class="gk">Quality</div><div class="gv">xUnit · bUnit · Moq · FluentAssertions · Code review · SonarQube · Debugging</div></div>
+      <div class="grp"><div class="gk">AI / Tooling</div><div class="gv">Python · LLM APIs (multi-model) · RAG · AI agents · MCP</div></div>
+      <div class="sep"></div>
+      <div class="gk2">Education</div><div class="gv">Systems Engineering coursework<br>Universidad Abierta Interamericana · 2008 – 2011</div>
+      <div class="gk2">Languages</div><div class="gv">Spanish: Native<br>English: Professional working proficiency (daily use with US teams since 2023)</div>
+    </div>
+  </div>
+
+  <div class="recos">
+    <div class="lab">Selected recommendations</div>
+    <div>
+      <span class="q">“Consistent and reliable, with a clear commitment to moving things forward. He takes ownership and keeps pushing to make sure things get done.”</span>
+      <div class="who">Sergio Rofi · Tech Lead</div>
+    </div>
+    <div>
+      <span class="q">“I've had the pleasure of working with Mauricio and have consistently been impressed by his professionalism, dependability, and commitment to delivering high-quality work. His collaborative approach stands out throughout the development lifecycle.”</span>
+      <div class="who">Ginger Hill · Product Leader</div>
+      <div class="verify">Verify on LinkedIn →</div>
+    </div>
+  </div>
+
+  <div class="foot"><span>EMAIL&nbsp;&nbsp;&nbsp;LINKEDIN&nbsp;&nbsp;&nbsp;PORTFOLIO</span><span>PAGE 2 / 2</span></div>
+</section>
+
+</body>
+</html>
